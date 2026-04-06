@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { readCartCookie, saveCartCookie } from '../../Utils/cartCookie';
 import { fetchDonuts } from '../../Utils/donutsApi';
 import { Donut } from '../../Models/Donuts';
-import axios from 'axios';
 import './CartPage.css';
+import api from '../../Utils/apiClient';
 
 export default function CartPage() {
     const navigate = useNavigate();
@@ -68,7 +68,7 @@ export default function CartPage() {
                 }))
             };
 
-            const res = await axios.post('http://localhost:8800/checkout', payload, {
+            const res = await api.post('/checkout', payload, {
                 withCredentials: true
             });
 
@@ -125,7 +125,7 @@ export default function CartPage() {
         async function checkAuthState() {
             try {
                 setIsCheckingAuth(true);
-                const res = await axios.get('http://localhost:8800/me', { withCredentials: true });
+                const res = await api.get('/me', { withCredentials: true });
 
                 if (!isMounted) {
                     return;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import './UsersPage.css';
+import api from '../../Utils/apiClient';
 
 type UserRow = {
     id: number;
@@ -30,8 +30,6 @@ export default function UsersPage() {
     const [updatingRoleId, setUpdatingRoleId] = useState<number | null>(null);
     const [pendingRoleChange, setPendingRoleChange] = useState<PendingRoleChange>(null);
 
-    axios.defaults.withCredentials = true;
-
     useEffect(() => {
         let isMounted = true;
 
@@ -40,8 +38,8 @@ export default function UsersPage() {
                 setIsLoading(true);
                 setErrorMessage('');
 
-                const authRes = await axios.get('http://localhost:8800/me');
-                const usersRes = await axios.get('http://localhost:8800/users');
+                const authRes = await api.get('/me');
+                const usersRes = await api.get('/users');
 
                 if (!isMounted) {
                     return;
@@ -88,7 +86,7 @@ export default function UsersPage() {
         try {
             setDeletingUserId(userId);
             setActionMessage('');
-            await axios.delete(`http://localhost:8800/users/${userId}`);
+            await api.delete(`/users/${userId}`);
             setUsers((prev) => prev.filter((user) => user.id !== userId));
             setActionMessage(`"${username}" was deleted successfully.`);
         } catch (error: any) {
@@ -105,7 +103,7 @@ export default function UsersPage() {
             setUpdatingRoleId(userId);
             setActionMessage('');
 
-            const res = await axios.put(`http://localhost:8800/users/${userId}/role`, { role: nextRole });
+            const res = await api.put(`/users/${userId}/role`, { role: nextRole });
 
             setUsers((prev) =>
                 prev.map((user) =>

@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import './Donuts.css';
+import api from "../../Utils/apiClient";
 
 const DonutsUpdate = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const DonutsUpdate = () => {
   useEffect(() => {
     const fetchDonut = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/donut/${donutId}`);
+        const res = await api.get(`/donut/${donutId}`);
         setDonut({
           ...res.data[0],
           ingredients: Array.isArray(res.data[0]?.ingredients)
@@ -48,7 +48,7 @@ const DonutsUpdate = () => {
     try {
       setIsSubmitting(true);
       setMessage(null);
-      const response = await axios.put(`http://localhost:8800/donuts/${donutId}`, {
+      const response = await api.put(`/donuts/${donutId}`, {
         ...donut,
         price: Number(donut.price),
         calories: Number(donut.calories)

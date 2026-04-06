@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
 import './NavBar.css'
 import { INavItem } from "./NavItemsData";
 import { clearCartCookie } from "../../Utils/cartCookie";
+import api from "../../Utils/apiClient";
 
 function StatusIcon() {
     return (
@@ -24,8 +24,6 @@ export default function NavBar(props: { items: INavItem[] }) {
     const accountRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const location = useLocation();
-
-    axios.defaults.withCredentials = true;
 
     const alwaysVisibleItems = useMemo(() => {
         const baseItems = props.items.filter((item) =>
@@ -68,7 +66,7 @@ export default function NavBar(props: { items: INavItem[] }) {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const res = await axios.get('http://localhost:8800/me');
+                const res = await api.get('/me');
                 if (res.data.status === "Success") {
                     setIsAuthenticated(true);
                     setAccountName(res.data.name || 'Connected');
@@ -108,7 +106,7 @@ export default function NavBar(props: { items: INavItem[] }) {
 
     const handleLogout = async () => {
         try {
-            await axios.get("http://localhost:8800/logout");
+            await api.get("/logout");
         } catch {
             // Keep UX smooth even if logout cleanup fails server-side.
         } finally {

@@ -1,8 +1,8 @@
-import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Donuts.css';
+import api from "../../Utils/apiClient";
 
 const DonutsAdd = () => {
   const [donut, setDonut] = useState({
@@ -28,7 +28,7 @@ const DonutsAdd = () => {
     try{
       setIsSubmitting(true);
       setMessage(null);
-      const response = await axios.post("http://localhost:8800/donuts", {
+      const response = await api.post("/donuts", {
         ...donut,
         price: Number(donut.price),
         calories: Number(donut.calories)

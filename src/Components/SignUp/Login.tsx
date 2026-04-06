@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../Utils/apiClient';
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -13,14 +13,13 @@ export default function Login() {
     const [loggedInRole, setLoggedInRole] = useState('');
    
     const navigate = useNavigate();
-    axios.defaults.withCredentials = true;
 
     React.useEffect(() => {
         let isMounted = true;
 
         async function checkLoggedInState() {
             try {
-                const res = await axios.get('http://localhost:8800/me');
+                const res = await api.get('/me');
 
                 if (!isMounted || res.data.status !== 'Success') {
                     return;
@@ -62,13 +61,13 @@ export default function Login() {
 
         try {
             setIsSubmitting(true);
-            const res = await axios.post('http://localhost:8800/login', formData);
+            const res = await api.post('/login', formData);
             if(res.data.status === "Logged in successfully") {
                 setAuthMessage({ type: 'success', text: 'Welcome back. Redirecting you now.' });
                 let nextRoute = '/my-perks';
 
                 try {
-                    const meRes = await axios.get('http://localhost:8800/me');
+                    const meRes = await api.get('/me');
                     nextRoute = meRes.data.role === 'admin' ? '/donutsv' : '/my-perks';
                 } catch {
                     // If the backend was not restarted yet and /me is missing,

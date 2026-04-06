@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './Donuts.css';
+import api from "../../Utils/apiClient";
 
 const DonutsV = () => {
   const [auth, setAuth] = useState(false);
@@ -11,10 +11,8 @@ const DonutsV = () => {
   const [donuts, setDonuts] = useState([]);
   const navigate = useNavigate(); 
 
-  axios.defaults.withCredentials = true;
-
   useEffect(() => {
-    axios.get('http://localhost:8800/donutsv')
+    api.get('/donutsv')
       .then(res => {
         if (res.data.status === "Success") {
           setAuth(true);
@@ -32,7 +30,7 @@ const DonutsV = () => {
   useEffect(() => {
     const fetchAllDonuts = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/donuts");
+        const res = await api.get("/donuts");
         setDonuts(res.data);
       } catch (err) {
         console.log(err);
@@ -43,7 +41,7 @@ const DonutsV = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8800/donuts/${id}`);
+      await api.delete(`/donuts/${id}`);
       setDonuts(donuts.filter(donut => donut.id !== id));
     } catch (err) {
       console.log(err);
@@ -51,8 +49,8 @@ const DonutsV = () => {
   };
 
   const handleDeleteCookie = () => {
-    axios.get("http://localhost:8800/logout")
-    .then(res=>{
+    api.get("/logout")
+    .then(() => {
       navigate('/login');
     }).catch(err => console.log(err))
   };

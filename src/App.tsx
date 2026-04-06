@@ -19,7 +19,7 @@ import CartPage from './Components/CartPage/CartPage';
 import UsersPage from './Components/UsersPage/UsersPage';
 import MemberPage from './Components/MemberPage/MemberPage';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from './Utils/apiClient';
 import ThankYouPage from './Components/ThankYouPage/ThankYouPage';
 
 function ScrollToTop() {
@@ -51,11 +51,9 @@ function useAuthSnapshot() {
   useEffect(() => {
     let isMounted = true;
 
-    axios.defaults.withCredentials = true;
-
     async function loadAuthState() {
       try {
-        const res = await axios.get('http://localhost:8800/me');
+        const res = await api.get('/me');
 
         if (!isMounted) {
           return;

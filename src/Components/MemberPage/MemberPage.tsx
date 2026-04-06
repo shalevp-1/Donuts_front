@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import './MemberPage.css';
+import api from '../../Utils/apiClient';
 
 type PurchaseItem = {
     donutId: number;
@@ -58,8 +58,6 @@ export default function MemberPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
 
-    axios.defaults.withCredentials = true;
-
     useEffect(() => {
         let isMounted = true;
 
@@ -69,8 +67,8 @@ export default function MemberPage() {
                 setErrorMessage('');
 
                 const [authRes, purchasesRes] = await Promise.all([
-                    axios.get('http://localhost:8800/me'),
-                    axios.get('http://localhost:8800/my-purchases')
+                    api.get('/me'),
+                    api.get('/my-purchases')
                 ]);
 
                 if (!isMounted) {

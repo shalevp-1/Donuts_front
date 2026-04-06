@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../Utils/apiClient';
 
 export default function SignUp() {
     const [formData, setFormData] = useState({
@@ -14,7 +14,6 @@ export default function SignUp() {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const navigate = useNavigate();
-    axios.defaults.withCredentials = true;
 
     const isValidEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -51,7 +50,7 @@ export default function SignUp() {
         if (handleSignUp()) {
             try {
                 setIsSubmitting(true);
-                const res = await axios.post('http://localhost:8800/register', formData);
+                const res = await api.post('/register', formData);
 
                 if (res.data.status === "Success") {
                     setAuthMessage({ type: 'success', text: res.data.message || 'Your account has been created successfully.' });

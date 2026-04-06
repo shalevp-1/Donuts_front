@@ -1,6 +1,5 @@
 import { Donut } from "../Models/Donuts";
-
-const DONUTS_API_URL = "http://localhost:8800/donuts";
+import { buildApiUrl } from "./apiClient";
 
 function normalizeIngredients(rawIngredients: unknown): string[] {
     if (Array.isArray(rawIngredients)) {
@@ -42,7 +41,7 @@ function normalizeDonut(rawDonut: any): Donut {
 }
 
 export async function fetchDonuts(): Promise<Donut[]> {
-    const response = await fetch(DONUTS_API_URL);
+    const response = await fetch(buildApiUrl("/donuts"));
 
     if (!response.ok) {
         throw new Error(`Failed to load donuts: ${response.status}`);
