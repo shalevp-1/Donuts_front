@@ -42,7 +42,6 @@ export default function DonutsGallery() {
     const [isLoading, setIsLoading] = useState(true);
     const [loadError, setLoadError] = useState('');
     const [theColor] = useState("white");
-    const [heroIndex, setHeroIndex] = useState(0);
     const loadMoreRef = useRef<HTMLDivElement | null>(null);
     const navigate = useNavigate();
 
@@ -58,9 +57,6 @@ export default function DonutsGallery() {
     const cartDonuts = donuts.filter((donut) => (cartItems[donut.id] ?? 0) > 0);
     const cartCount = Object.values(cartItems).reduce((sum, qty) => sum + qty, 0);
     const cartTotal = cartDonuts.reduce((sum, donut) => sum + donut.price * (cartItems[donut.id] ?? 0), 0);
-    const heroDonuts = donuts.slice(0, Math.min(5, donuts.length));
-    const rotatingHeroDonut = heroDonuts[heroIndex % Math.max(heroDonuts.length, 1)] ?? null;
-
     const addToCart = (donutId: number, amount = 1, closePopup = false) => {
         setCartItems((prev) => ({
             ...prev,
@@ -186,7 +182,7 @@ export default function DonutsGallery() {
 
         observer.observe(loadMoreRef.current);
         return () => observer.disconnect();
-    }, [hasMoreDonuts, visibleCount]);
+    }, [donuts.length, hasMoreDonuts]);
 
     useEffect(() => {
         if (!activeDonut) {
@@ -202,18 +198,6 @@ export default function DonutsGallery() {
         document.addEventListener('keydown', handleEscape);
         return () => document.removeEventListener('keydown', handleEscape);
     }, [activeDonut]);
-
-    useEffect(() => {
-        if (heroDonuts.length <= 1) {
-            return;
-        }
-
-        const interval = window.setInterval(() => {
-            setHeroIndex((prev) => (prev + 1) % heroDonuts.length);
-        }, 2600);
-
-        return () => window.clearInterval(interval);
-    }, [heroDonuts.length]);
 
     return (
         <div className='DonutsGallery'>
@@ -320,42 +304,6 @@ export default function DonutsGallery() {
                         </div>
                     </div>
                 </div>
-                {/* <div className="heroHighlight heroFeatureStrip">
-                    {rotatingHeroDonut ? (
-                        <>
-                            <div className="rotatingHeroFrame">
-                                <img
-                                    key={rotatingHeroDonut.id}
-                                    src={rotatingHeroDonut.image}
-                                    alt={rotatingHeroDonut.name}
-                                    className="rotatingHeroImage"
-                                />
-                            </div>
-                            <div className="featureBubble featureMainBubble">
-                                <strong>{rotatingHeroDonut.name}</strong>
-                                <span>Rotating showcase pulled directly from your live bakery database</span>
-                            </div>
-                            <div className="heroThumbStrip">
-                                {heroDonuts.map((donut, index) => (
-                                    <button
-                                        key={donut.id}
-                                        type="button"
-                                        className={`heroThumbBtn ${rotatingHeroDonut.id === donut.id ? 'active' : ''}`}
-                                        onClick={() => setHeroIndex(index)}
-                                        aria-label={`Show ${donut.name}`}
-                                    >
-                                        <img src={donut.image} alt={donut.name} />
-                                    </button>
-                                ))}
-                            </div>
-                        </>
-                    ) : (
-                        <div className="featureBubble featureMainBubble">
-                            <strong>Fresh Batch</strong>
-                            <span>Once your donuts load from SQL, this showcase rotates through them automatically.</span>
-                        </div>
-                    )}
-                </div> */}
             </div>
 
             <div className="galleryShell">

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './UsersPage.css';
-import { error } from 'node:console';
 
 type UserRow = {
     id: number;

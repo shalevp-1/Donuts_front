@@ -38,7 +38,7 @@ export default function Home() {
         <div className='homeHeroVisual'>
           <img
             src="https://as2.ftcdn.net/v2/jpg/01/76/75/93/1000_F_176759374_kcm45VGAkoqILGSAwE8mhTbn3IuaoB8P.jpg"
-            alt="Background image of donuts"
+            alt="Assorted donuts on display"
             className="homeHeroImage"
           />
           <div className='heroGlassCard'>
