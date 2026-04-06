@@ -1,51 +1,150 @@
-.SignUp , .Login {
+.SignUp,
+.Login {
+    min-height: calc(100vh - 96px);
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 90.6vh;
-    background: linear-gradient(to bottom right, #97d1f8, #b5f8d1); 
+    justify-content: center;
+    padding: 2rem clamp(1rem, 3vw, 2.5rem) 4rem;
 }
 
-.form {
-    max-width: 400px;
+.authShell {
+    width: min(1120px, 100%);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 440px);
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.authIntro {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(2rem, 5vw, 4rem);
+    min-height: 560px;
+    border-radius: 36px;
+    background:
+        linear-gradient(180deg, rgba(74, 46, 34, 0.12), rgba(74, 46, 34, 0.56)),
+        linear-gradient(135deg, rgba(246, 197, 169, 0.34), transparent 42%),
+        url("https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1200&q=80") center/cover;
+    box-shadow: 0 28px 90px rgba(109, 77, 58, 0.18);
+}
+
+.authIntro h1 {
+    margin: 0;
+    max-width: 10ch;
+    color: #fffaf5;
+    font-size: clamp(2.6rem, 6vw, 4.8rem);
+    line-height: 0.94;
+    letter-spacing: -0.05em;
+}
+
+.authIntro p {
+    max-width: 28rem;
+    margin: 1rem 0 0;
+    color: rgba(255, 248, 242, 0.9);
+    font-size: 1.02rem;
+    line-height: 1.75;
+}
+
+.authCard {
     width: 100%;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    padding: 2rem;
+    align-self: center;
+    border-radius: 28px;
+    border: 1px solid rgba(146, 112, 94, 0.12);
+    background:
+        radial-gradient(circle at top right, rgba(245, 205, 180, 0.48), transparent 28%),
+        linear-gradient(180deg, rgba(255, 249, 243, 0.92), rgba(244, 235, 226, 0.9));
+    box-shadow: 0 24px 80px rgba(109, 77, 58, 0.14);
 }
 
-.input-container {
-    margin-bottom: 20px;
+.authCard form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
 }
 
-input {
+.authMessage {
+    padding: 0.95rem 1rem;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    border: 1px solid transparent;
+}
+
+.authMessage.error {
+    background: rgba(197, 65, 65, 0.08);
+    border-color: rgba(197, 65, 65, 0.18);
+    color: #8d2c2c;
+}
+
+.authMessage.success {
+    background: rgba(63, 128, 82, 0.1);
+    border-color: rgba(63, 128, 82, 0.18);
+    color: #2c6b42;
+}
+
+.authCard input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(146, 112, 94, 0.14);
+    border-radius: 10px;
     box-sizing: border-box;
-    font-size: 16px;
-    margin-bottom: 10px;
-    transition: border-color 0.3s ease;
+    font-size: 1rem;
+    color: #372820;
+    background: rgba(255, 255, 255, 0.5);
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
-input:focus {
+.authCard input::placeholder {
+    color: #8e7a6e;
+}
+
+.authCard input:focus {
     outline: none;
-    border-color: #3498db; 
+    border-color: #a8664f;
+    background: rgba(255, 255, 255, 0.72);
 }
 
-input[type="button"] {
-    background-color: #2ecc71;
-    color: #fff;
+.authCard input[type="submit"] {
+    margin-top: 0.5rem;
+    border: 0;
+    background: #7d4f3d;
+    color: #fff8f3;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight: 700;
 }
 
-input[type="button"]:hover {
-    background-color: #27ae60; 
+.authCard input[type="submit"]:disabled {
+    opacity: 0.72;
+    cursor: wait;
+    transform: none;
 }
- 
 
-/* https://happywall-img-gallery.imgix.net/52146/delicious_donuts_display.jpg
-*/ 
+.authCard input[type="submit"]:hover {
+    background: #94604b;
+    transform: translateY(-1px);
+}
+
+.authSwitch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    color: #6e5c52;
+    text-decoration: none;
+}
+
+.authSwitch:hover {
+    color: #3f2d25;
+}
+
+@media (max-width: 900px) {
+    .authShell {
+        grid-template-columns: 1fr;
+    }
+
+    .authIntro {
+        min-height: 320px;
+    }
+}

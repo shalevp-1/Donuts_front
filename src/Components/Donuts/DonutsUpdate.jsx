@@ -10,18 +10,27 @@ const DonutsUpdate = () => {
 
   const [donut, setDonut] = useState({
     name: "",
-    flavor: "",
     price: "",
     description: "",
+    ingredients: "",
+    calories: "",
     image: ""
   });
+  const [message, setMessage] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
  
   useEffect(() => {
     const fetchDonut = async () => {
       try {
         const res = await axios.get(`http://localhost:8800/donut/${donutId}`);
-        setDonut(res.data[0]); 
+        setDonut({
+          ...res.data[0],
+          ingredients: Array.isArray(res.data[0]?.ingredients)
+            ? res.data[0].ingredients.join(", ")
+            : res.data[0]?.ingredients || "",
+          calories: res.data[0]?.calories ?? ""
+        }); 
       } catch (err) {
         console.log("Error fetching donut data:", err);
       }
@@ -37,18 +46,33 @@ const DonutsUpdate = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8800/donuts/${donutId}`, donut);
-      alert("Donut has been updated successfully");
+      setIsSubmitting(true);
+      setMessage(null);
+      const response = await axios.put(`http://localhost:8800/donuts/${donutId}`, {
+        ...donut,
+        price: Number(donut.price),
+        calories: Number(donut.calories)
+      });
+      setMessage({ type: "success", text: response.data?.message || "Donut has been updated successfully." });
       navigate("/donutsv");
     } catch (err) {
-      alert("Error updating donuts data");
+      setMessage({
+        type: "error",
+        text: err?.response?.data?.error || "Error updating donut data."
+      });
       console.log("Error updating donut:", err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className='form'>
+    <div className='donutAdminPage'>
+      <div className='donutFormCard'>
+      <p className='adminEyebrow'>Admin</p>
       <h1>Update The Donut</h1>
+      <p className='adminLead'>Edit the donut details and save them back to MySQL.</p>
+      {message && <div className={`adminMessage ${message.type}`}>{message.text}</div>}
       <input
         type="text"
         placeholder='Name'
@@ -58,24 +82,30 @@ const DonutsUpdate = () => {
       />
       <input
         type="text"
-        placeholder='Flavor'
-        value={donut.flavor}
-        onChange={handleChange}
-        name="flavor"
-      />
-      <input
-        type="number"
         placeholder='Price'
         value={donut.price}
         onChange={handleChange}
         name="price"
       />
-      <input
-        type="text"
+      <textarea
         placeholder='Description'
         value={donut.description}
         onChange={handleChange}
         name="description"
+      />
+      <input
+        type="text"
+        placeholder='Ingredients (comma separated)'
+        value={donut.ingredients}
+        onChange={handleChange}
+        name="ingredients"
+      />
+      <input
+        type="number"
+        placeholder='Calories'
+        value={donut.calories}
+        onChange={handleChange}
+        name="calories"
       />
       <input
         type="text"
@@ -84,7 +114,8 @@ const DonutsUpdate = () => {
         onChange={handleChange}
         name="image"
       />
-      <button onClick={handleClick}>Update</button>
+      <button onClick={handleClick} disabled={isSubmitting}>{isSubmitting ? "Saving..." : "Update Donut"}</button>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,287 @@
+.UsersPage {
+    min-height: calc(100vh - 96px);
+    padding: 2rem clamp(1rem, 3vw, 2.5rem) 3rem;
+    background:
+        radial-gradient(circle at top left, rgba(255, 228, 208, 0.72), transparent 24%),
+        radial-gradient(circle at top right, rgba(205, 226, 255, 0.64), transparent 30%),
+        linear-gradient(180deg, #f6f1eb 0%, #edf2f8 52%, #e5edf8 100%);
+}
+
+.usersShell,
+.usersCard {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.usersHero,
+.usersTableCard,
+.usersCard {
+    border-radius: 30px;
+    border: 1px solid rgba(139, 103, 83, 0.1);
+    background: rgba(255, 250, 245, 0.88);
+    box-shadow: 0 20px 55px rgba(90, 63, 45, 0.08);
+}
+
+.usersHero {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.usersEyebrow {
+    margin: 0 0 0.35rem;
+    color: #8a6a5c;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.usersHero h1,
+.usersCard h1 {
+    margin: 0;
+    color: #231a15;
+    font-size: clamp(2.1rem, 4vw, 3.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    max-width: 12ch;
+}
+
+.usersLead,
+.usersCard p {
+    max-width: 44rem;
+    margin: 0.9rem 0 0;
+    color: #655951;
+    line-height: 1.7;
+}
+
+.usersHeroStat {
+    min-width: 180px;
+    padding: 1rem 1.15rem;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.usersHeroStat span {
+    display: block;
+    color: #8a6a5c;
+    font-size: 0.88rem;
+}
+
+.usersHeroStat strong {
+    display: block;
+    margin-top: 0.35rem;
+    color: #261d18;
+    font-size: 1.9rem;
+}
+
+.usersTableCard {
+    margin-top: 1.25rem;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.usersActionMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 1rem 0;
+    padding: 0.9rem 1rem;
+    border-radius: 18px;
+    background: rgba(247, 135, 135, 0.72);
+    color: #ffffff;
+}
+
+.usersConfirmOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background: rgba(38, 27, 21, 0.35);
+    backdrop-filter: blur(10px);
+}
+
+.usersConfirmDialog {
+    width: min(100%, 460px);
+    padding: 1.5rem;
+    border-radius: 30px;
+    border: 1px solid rgba(139, 103, 83, 0.14);
+    background: rgba(255, 250, 245, 0.98);
+    box-shadow: 0 28px 70px rgba(69, 47, 35, 0.18);
+}
+
+.usersConfirmEyebrow {
+    margin: 0 0 0.45rem;
+    color: #9a6a50;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.usersConfirmDialog h2 {
+    margin: 0;
+    color: #241a16;
+    font-size: 1.7rem;
+    line-height: 1.08;
+}
+
+.usersConfirmDialog p {
+    margin: 0.85rem 0 0;
+    color: #655951;
+    line-height: 1.65;
+}
+
+.usersConfirmActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1.3rem;
+}
+
+.usersConfirmPrimary,
+.usersConfirmSecondary {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.85rem 1.1rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.usersConfirmPrimary {
+    background: #7d4f3d;
+    color: #fff8f2;
+}
+
+.usersConfirmSecondary {
+    background: rgba(125, 79, 61, 0.12);
+    color: #744f3f;
+}
+
+.usersTableHead,
+.usersTableRow {
+    display: grid;
+    grid-template-columns: 70px minmax(140px, 0.7fr) minmax(210px, 1fr) 110px 90px 100px 110px 130px;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 1.2rem;
+}
+
+.usersTableHead {
+    background: rgba(125, 79, 61, 0.08);
+    color: #7a665a;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.usersTableRow {
+    color: #2b211c;
+    border-top: 1px solid rgba(139, 103, 83, 0.08);
+}
+
+.usersTableRow span:last-child {
+    color: #6c5e56;
+    word-break: break-word;
+}
+
+.usersActionGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+}
+
+.usersDeleteBtn,
+.usersRoleToggleBtn {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.72rem 1rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.usersRoleToggleBtn {
+    background: rgba(125, 79, 61, 0.12);
+    color: #744f3f;
+}
+
+.usersDeleteBtn {
+    background: rgba(205, 70, 70, 0.12);
+    color: #952f2f;
+}
+
+.usersDeleteBtn:disabled,
+.usersRoleToggleBtn:disabled {
+    opacity: 0.72;
+    cursor: wait;
+}
+
+.usersRoleBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 0.38rem 0.72rem;
+    border-radius: 999px;
+    background: rgba(125, 79, 61, 0.1);
+    color: #734c3c;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.usersCard {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.usersPrimaryAction {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 0.9rem 1.2rem;
+    border-radius: 999px;
+    background: #7d4f3d;
+    color: #fff8f2;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+@media (max-width: 860px) {
+    .usersHero {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .usersTableHead,
+    .usersTableRow {
+        grid-template-columns: 90px 1fr;
+    }
+
+    .usersTableHead span:nth-child(n+3),
+    .usersTableRow span:nth-child(n+3),
+    .usersDeleteBtn {
+        grid-column: 1 / -1;
+    }
+
+    .usersActionGroup,
+    .usersRoleBadge,
+    .usersDeleteBtn {
+        width: fit-content;
+    }
+
+    .usersConfirmActions {
+        flex-direction: column;
+    }
+}

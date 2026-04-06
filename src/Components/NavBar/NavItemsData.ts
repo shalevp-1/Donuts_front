@@ -23,5 +23,9 @@ export let navBarArr = [
     {
         displayStr: "Login",
         urlStr: "/Login"
+    },
+    {
+        displayStr: "My Cart",
+        urlStr: "/cart"
     }
 ]

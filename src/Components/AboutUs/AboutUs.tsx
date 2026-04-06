@@ -2,48 +2,64 @@
 import React from 'react';
 import './AboutUs.css';
 
-
-
 export default function AboutUs() {
   return (
-    <div className="aboutUsContainer">
-      <div className="aboutUsContent">
-        <div className="aboutUsText">
-          <h2>Welcome to Shalev's Bakery</h2>
-          <br />
-          <p>
-            At Shalev's Bakery Bakery, we believe in the magic of freshly baked goods that bring joy and sweetness to your life.
-            Our journey began several decades ago when our founder, Shalev, turned his passion for baking into a delightful business.
-          </p>
-          <br />
-          <p>
-            Located in the heart of the city, Shalev's Bakery has been serving our community with love and dedication.
-            Our commitment to quality ingredients and traditional recipes ensures that every bite is a moment of pure bliss.
-          </p>
-          <br />
-          <p>
-            Our bakery is not just about donuts; it's about creating memories, celebrating special occasions, and making everyday moments extraordinary.
-            The inviting aroma of our oven-fresh treats welcomes you as you step into our cozy space.
-          </p>
-          <br />
-          <p>
-            Come and indulge in our wide variety of pastries, cakes, and, of course, our signature donuts.
-            Every creation is crafted with care, and we take pride in being a part of your sweetest moments.
+    <div className="aboutPage">
+      <section className="aboutHero">
+        <div className="aboutIntro">
+          <h1>Fresh baking, calm design, and donuts worth slowing down for.</h1>
+          <p className="aboutLead">
+            Shalev&apos;s Bakery is built around simple ingredients, careful craft,
+            and a storefront that feels just as refined as what comes out of the oven.
           </p>
         </div>
-        <div className="aboutUsImage">
-          <img src="https://i.insider.com/5ba398469c888d0f2c8b4567?width=700" alt="Bakery Interior" />
+        <div className="aboutHeroImageWrap">
+          <img src="https://i.insider.com/5ba398469c888d0f2c8b4567?width=700" alt="Bakery Interior" className="aboutHeroImage" />
         </div>
-      </div>
-      <div className="contactInfo">
-        <h3>Contact Us</h3>
-        <p>
-          <strong>Address:</strong> 123 Baker Street, Sweetville, CA 98765
-        </p>
-        <p>
-          <strong>Phone:</strong> (050) 233-6023
-        </p>
-      </div>
+      </section>
+
+      <section className="aboutStoryGrid">
+        <div className="aboutStoryCard">
+          <h2>What we believe</h2>
+          <p>
+            At Shalev&apos;s Bakery, we believe the best bakeries feel effortless:
+            warm service, clean presentation, and food that speaks for itself.
+          </p>
+          <p>
+            Our journey began when Shalev turned a love of baking into a place
+            people could come back to again and again for their favorite sweet ritual.
+          </p>
+        </div>
+
+        <div className="aboutStoryCard">
+          <h2>Why people return</h2>
+          <p>
+            We focus on quality ingredients, balanced flavors, and a menu that
+            feels playful without losing that premium bakery touch.
+          </p>
+          <p>
+            Donuts are our signature, but the real goal is simple: create a space
+            that makes everyday cravings feel a little more special.
+          </p>
+        </div>
+      </section>
+
+      <section className="aboutDetailsPanel">
+        <div className="aboutDetailsText">
+          <p>
+            From morning coffee runs to celebration boxes, each bake is made to
+            feel fresh, memorable, and a bit elevated.
+          </p>
+        </div>
+        <div className="contactInfo">
+          <div>
+            <strong>123 Baker Street, Sweetville, CA 98765</strong>
+          </div>
+          <div>
+            <strong>(050) 233-6023</strong>
+          </div>
+        </div>
+      </section>
     </div>
   )};
 

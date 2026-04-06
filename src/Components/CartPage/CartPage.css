@@ -1,0 +1,303 @@
+.CartPage {
+    min-height: 100vh;
+    padding: 2rem clamp(1rem, 3vw, 2.5rem) 3rem;
+    background:
+        radial-gradient(circle at top left, rgba(255, 228, 208, 0.7), transparent 22%),
+        radial-gradient(circle at top right, rgba(210, 228, 255, 0.6), transparent 28%),
+        linear-gradient(180deg, #f6f1eb 0%, #eef2f8 52%, #e5edf8 100%);
+}
+
+.cartHero {
+    max-width: 1400px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.cartEyebrow {
+    margin: 0 0 0.4rem;
+    color: #8b6f60;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.cartHero h1 {
+    margin: 0;
+    color: #1f1a16;
+    font-size: clamp(2.2rem, 4vw, 4.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    max-width: 11ch;
+}
+
+.cartLead {
+    max-width: 42rem;
+    margin: 1rem 0 0;
+    color: #665851;
+    line-height: 1.7;
+}
+
+.cartBackBtn,
+.cartBrowseBtn {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.9rem 1.2rem;
+    background: rgba(125, 79, 61, 0.12);
+    color: #6f4b3b;
+    cursor: pointer;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.cartLayout {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.72fr);
+    gap: 1.4rem;
+    align-items: start;
+}
+
+.cartItemsPanel,
+.summaryCard,
+.cartEmptyState {
+    border: 1px solid rgba(139, 103, 83, 0.1);
+    border-radius: 32px;
+    background: rgba(255, 250, 245, 0.86);
+    box-shadow: 0 18px 48px rgba(90, 63, 45, 0.08);
+}
+
+.cartItemsPanel {
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.checkoutRow {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 26px;
+    background: linear-gradient(180deg, rgba(255, 251, 247, 0.95), rgba(245, 238, 229, 0.76));
+}
+
+.checkoutThumb {
+    width: 110px;
+    height: 110px;
+    border-radius: 22px;
+    object-fit: cover;
+}
+
+.checkoutInfo {
+    min-width: 0;
+    display: grid;
+    gap: 0.85rem;
+}
+
+.checkoutTitleRow {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.checkoutTitleRow h2 {
+    margin: 0;
+    color: #251d18;
+    font-size: 1.25rem;
+}
+
+.checkoutTitleRow p {
+    margin: 0.45rem 0 0;
+    color: #6d5c53;
+    line-height: 1.55;
+}
+
+.checkoutTitleRow strong {
+    color: #2f241e;
+    font-size: 1.15rem;
+    white-space: nowrap;
+}
+
+.checkoutMetaRow {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: #7b6b61;
+    font-weight: 600;
+}
+
+.checkoutActions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem;
+}
+
+.checkoutQty {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.checkoutQty button {
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(125, 79, 61, 0.1);
+    color: #714d3d;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.checkoutQty span {
+    min-width: 2ch;
+    text-align: center;
+    color: #2f241e;
+    font-weight: 700;
+}
+
+.checkoutRemoveBtn {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.8rem 1rem;
+    background: rgba(125, 79, 61, 0.11);
+    color: #744f3f;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.cartSummaryPanel {
+    position: sticky;
+    top: 8rem;
+}
+
+.summaryCard {
+    padding: 1.2rem;
+}
+
+.summaryLabel {
+    margin: 0 0 1rem;
+    color: #8b6f60;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.9rem;
+}
+
+.summaryRow,
+.summaryTotal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: #3f322b;
+}
+
+.summaryRow {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(146, 112, 94, 0.12);
+}
+
+.summaryTotal {
+    margin-top: 0.9rem;
+    padding-top: 0.6rem;
+    font-size: 1.2rem;
+}
+
+.summaryCheckoutBtn,
+.summaryClearBtn {
+    width: 100%;
+    border: 0;
+    border-radius: 22px;
+    padding: 0.95rem 1rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.summaryCheckoutBtn:disabled,
+.summaryClearBtn:disabled {
+    opacity: 0.72;
+    cursor: wait;
+}
+
+.summaryCheckoutBtn {
+    margin-top: 1rem;
+    background: #7d4f3d;
+    color: #fff8f2;
+}
+
+.summaryMessage {
+    margin: 1rem 0 0;
+    color: #7b4d3c;
+    line-height: 1.5;
+}
+
+.summaryClearBtn {
+    margin-top: 0.7rem;
+    background: rgba(125, 79, 61, 0.12);
+    color: #714d3d;
+}
+
+.cartEmptyState {
+    padding: 2rem;
+    text-align: center;
+}
+
+.cartEmptyState h2 {
+    margin: 0;
+    color: #251d18;
+}
+
+.cartEmptyState p {
+    margin: 0.75rem auto 0;
+    max-width: 28rem;
+    color: #6d5c53;
+    line-height: 1.6;
+}
+
+.cartEmptyState .cartBrowseBtn {
+    margin-top: 1rem;
+}
+
+@media (max-width: 960px) {
+    .cartLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .cartSummaryPanel {
+        position: static;
+    }
+}
+
+@media (max-width: 700px) {
+    .cartHero {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .checkoutRow {
+        grid-template-columns: 1fr;
+    }
+
+    .checkoutThumb {
+        width: 100%;
+        height: 180px;
+    }
+
+    .checkoutTitleRow,
+    .checkoutActions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

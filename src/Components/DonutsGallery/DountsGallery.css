@@ -1,60 +1,747 @@
-body {
-    background-color: rgb(177, 219, 208);
+.DonutsGallery {
+    min-height: 100vh;
+    padding: 1.75rem clamp(1rem, 3vw, 2.5rem) 3.5rem;
+    background:
+        radial-gradient(circle at 12% 10%, rgba(255, 210, 156, 0.34), transparent 24%),
+        radial-gradient(circle at 86% 12%, rgba(155, 226, 255, 0.34), transparent 28%),
+        radial-gradient(circle at 78% 92%, rgba(177, 236, 212, 0.24), transparent 26%),
+        linear-gradient(180deg, #fffdf9 0%, #fffaf2 44%, #f5fbff 100%);
+}
+
+.donutsHero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+    gap: 1.35rem;
+    align-items: stretch;
+    margin: 0 auto 2rem;
+    max-width: 1440px;
+}
+
+.donutsHeroCopy,
+.heroHighlight {
+    position: relative;
+    overflow: hidden;
+    border-radius: 36px;
+    border: 1px solid rgba(125, 179, 210, 0.14);
+    box-shadow: 0 24px 68px rgba(84, 121, 148, 0.1);
+}
+
+.donutsHeroCopy {
+    padding: clamp(1.85rem, 3vw, 3rem);
+    background:
+        radial-gradient(circle at 88% 18%, rgba(255, 214, 170, 0.28), transparent 16%),
+        radial-gradient(circle at 14% 82%, rgba(155, 226, 255, 0.2), transparent 22%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(244, 250, 255, 0.94));
+}
+
+.heroEyebrow {
+    margin: 0 0 0.8rem;
+    color: #6c8ba1;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.donutsHeroCopy h1 {
+    max-width: 12ch;
+    margin: 0;
+    color: #2e231d;
+    font-size: clamp(1.95rem, 5.2vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+}
+
+.heroText {
+    max-width: 35rem;
+    margin: 1.1rem 0 0;
+    color: #6f645a;
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+.heroSummary {
+    margin: 1.2rem 0 0;
+    color: #7890a1;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.heroStatRow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+}
+
+.heroStatCard {
+    padding: 1rem 1.05rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(125, 179, 210, 0.14);
+}
+
+.heroStatCard span {
+    display: block;
+    color: #7d95a6;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.heroStatCard strong {
+    display: block;
+    margin-top: 0.35rem;
+    color: #342721;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.heroHighlight {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    padding: 1rem;
+    background:
+        linear-gradient(160deg, rgba(248, 252, 255, 0.98), rgba(255, 249, 241, 0.95));
+}
+
+.heroFeatureStrip {
+    align-content: center;
+}
+
+.rotatingHeroFrame {
+    overflow: hidden;
+    border-radius: 26px;
+    aspect-ratio: 1.08 / 1;
+    min-height: 0;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: inset 0 0 0 1px rgba(125, 179, 210, 0.1);
+}
+
+.rotatingHeroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: heroImageReveal 540ms ease;
+}
+
+.featureBubble {
+    padding: 1rem 1.05rem;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(125, 179, 210, 0.14);
+}
+
+.featureMainBubble {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(245, 251, 255, 0.96));
+}
+
+.featureBubble strong {
+    display: block;
+    color: #322620;
+    font-size: 0.9rem;
+}
+
+.featureBubble span {
+    display: block;
+    margin-top: 0.3rem;
+    color: #6c7f8d;
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
+.heroThumbStrip {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.6rem;
+}
+
+.heroThumbBtn {
+    padding: 0;
+    border: 1px solid rgba(125, 179, 210, 0.12);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.82);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.heroThumbBtn img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.heroThumbBtn:hover,
+.heroThumbBtn.active {
+    transform: translateY(-2px);
+    border-color: rgba(155, 226, 255, 0.52);
+    box-shadow: 0 14px 28px rgba(84, 121, 148, 0.12);
+}
+
+.galleryShell {
+    display: block;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .theGallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 70%;
-    
-
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
 }
 
-.galleryRightSide {
+.loadStateMessage {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 1rem 1.15rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #64798a;
+    border: 1px solid rgba(125, 179, 210, 0.12);
+}
+
+.loadMoreSentinel {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 88px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.84);
+    color: #708291;
+    border: 1px dashed rgba(125, 179, 210, 0.18);
+}
+
+.loadMoreSentinel p {
+    margin: 0;
+    font-size: 0.98rem;
+}
+
+.floatingSelectedDonut {
     position: fixed;
-    right: 0;
- 
+    left: 1rem;
+    bottom: 1.2rem;
+    z-index: 9;
+    width: 84px;
+    height: 84px;
+    padding: 0;
+    border: 1px solid rgba(125, 179, 210, 0.18);
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(238, 249, 255, 0.96));
+    box-shadow: 0 16px 38px rgba(84, 121, 148, 0.16);
+    cursor: pointer;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    animation: floatingDonutIdle 2.2s ease-in-out infinite;
+}
+
+.floatingSelectedDonut::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(155, 226, 255, 0.26), transparent 68%);
+    opacity: 0.72;
     z-index: -1;
 }
 
-.card {
-    margin: 1%;
-    margin-right: 3%;
-    width: 200px;
-    align-items: center;
-    justify-content: space-around;
-
-}
-
-.theGallery>img {
-    opacity: 0.8;
-    z-index: -2;
-    border-radius: 0;
-    position: fixed;
-    background-repeat: repeat-x;
-    align-items: center;
-    width: 1800px;
-    height: 1000px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.DonutsGallery>img {
+.floatingSelectedDonut img {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: 100vh;
-    opacity: 0.7;
-    z-index: -2;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.88;
 }
 
-.DonutsGallery {
+.selectedDonutIcon {
+    position: absolute;
+    inset: auto 0.35rem 0.35rem auto;
+    width: 18px;
+    height: 18px;
+    color: #fffdf9;
+    z-index: 1;
+}
+
+.floatingSelectedDonut:hover {
+    transform: translateY(-10px) scale(1.18);
+    box-shadow: 0 24px 44px rgba(84, 121, 148, 0.2);
+    border-color: rgba(125, 179, 210, 0.34);
+    animation: floatingDonutHop 420ms ease;
+}
+
+.cartPanelWrap {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.8rem;
+    position: relative;
+}
+
+.floatingCartArea {
+    position: fixed;
+    right: clamp(1rem, 3vw, 2.5rem);
+    bottom: 1.25rem;
+    z-index: 8;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.floatingCartArea .cartPanelWrap {
+    width: min(368px, calc(100vw - 1.5rem));
+}
+
+.cartSummaryPill {
+    position: absolute;
+    right: 76px;
+    bottom: 0.55rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.98), rgba(235, 248, 255, 0.96));
+    color: #546d7d;
+    font-weight: 800;
+    box-shadow: 0 12px 30px rgba(84, 121, 148, 0.12);
+    white-space: nowrap;
+}
+
+.cartToggleBtn {
+    width: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 72px;
+    padding: 0.9rem;
+    border: 1px solid rgba(125, 179, 210, 0.16);
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(236, 248, 255, 0.96));
+    color: #557081;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 16px 40px rgba(84, 121, 148, 0.12);
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.floatingCartIcon {
+    width: 26px;
+    height: 26px;
+    flex: 0 0 auto;
+}
+
+.cartToggleBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 20px 48px rgba(84, 121, 148, 0.14);
+}
+
+.cartToggleBtn strong {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0 0.45rem;
+    border-radius: 999px;
+    background: #ffb562;
+    color: #fffaf3;
+    font-size: 0.92rem;
+}
+
+.cartPanel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 0.85rem);
+    width: min(368px, calc(100vw - 1.5rem));
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 28px;
+    border: 1px solid rgba(125, 179, 210, 0.12);
+    background:
+        radial-gradient(circle at top right, rgba(255, 214, 170, 0.24), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 250, 255, 0.97));
+    box-shadow: 0 22px 52px rgba(84, 121, 148, 0.14);
+    overflow-x: hidden;
+}
+
+.cartEmpty {
+    margin: 0;
+    color: #718392;
+}
+
+.cartList {
+    display: grid;
+    gap: 0.8rem;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 0.15rem;
+    scrollbar-gutter: stable;
+}
+
+.cartRow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 0;
+    padding: 0.75rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(125, 179, 210, 0.08);
+}
+
+.cartRow:last-child {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(125, 179, 210, 0.08);
+}
+
+.cartRowInfo {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.cartRowCopy {
+    display: grid;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+.cartRowThumb {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 8px 18px rgba(84, 121, 148, 0.12);
+}
+
+.cartRowActions {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex: 0 0 auto;
+}
+
+.cartRemoveItemBtn {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(155, 226, 255, 0.18);
+    color: #42738b;
+    cursor: pointer;
+    font-size: 0.68rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.cartRow h4 {
+    margin: 0;
+    color: #2f2621;
+    font-size: 0.95rem;
+    line-height: 1.25;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.cartRow p {
+    margin: 0;
+    color: #708291;
+    font-size: 0.84rem;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.removeCartBtn {
+    border: 0;
+    background: rgba(125, 179, 210, 0.12);
+    color: #537081;
+    border-radius: 999px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.78rem;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.cartQtyControls {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-wrap: nowrap;
+    padding: 0.15rem 0.2rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.cartQtyControls span {
+    min-width: 0.8rem;
+    text-align: center;
+    color: #475866;
+    font-weight: 700;
+    font-size: 0.78rem;
+}
+
+.removeCartBtn:hover {
+    background: rgba(125, 179, 210, 0.18);
+    transform: translateY(-1px);
+}
+
+.cartFooter {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.85rem;
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(125, 179, 210, 0.12);
+    color: #334552;
+}
+
+.cartTotalBlock {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.cartTotalBlock span {
+    color: #738492;
+    font-size: 0.9rem;
+}
+
+.cartFooterActions {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.cartClearBtn {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.72rem 0.95rem;
+    background: rgba(125, 179, 210, 0.14);
+    color: #567283;
+    cursor: pointer;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.cartBuyBtn {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.72rem 1rem;
+    background: #ffb562;
+    color: #fff8f2;
+    cursor: pointer;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.donutModalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 1.5rem 1.5rem;
+    background:
+        linear-gradient(180deg, rgba(46, 39, 34, 0.18), rgba(46, 39, 34, 0.3)),
+        radial-gradient(circle at top right, rgba(155, 226, 255, 0.16), transparent 26%);
+    backdrop-filter: blur(8px);
+}
+
+.donutModalCard {
+    width: min(940px, calc(100vw - 4rem));
+    max-height: calc(100vh - 8.5rem);
+    overflow: hidden;
+}
+
+@media (max-width: 1080px) {
+    .donutsHero {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
+    .DonutsGallery {
+        padding-top: 1.25rem;
+    }
+
+    .donutsHero {
+        gap: 1rem;
+    }
+
+    .heroStatRow {
+        grid-template-columns: 1fr;
+    }
+
+    .heroThumbStrip {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .theGallery {
+        grid-template-columns: 1fr;
+    }
+
+    .floatingSelectedDonut {
+        left: 0.65rem;
+        bottom: 0.7rem;
+        width: 56px;
+        height: 56px;
+    }
+
+    .floatingCartArea .cartPanelWrap {
+        width: min(340px, calc(100vw - 1rem));
+    }
+
+    .cartSummaryPill {
+        right: 68px;
+        bottom: 0.45rem;
+        padding: 0.5rem 0.72rem;
+        font-size: 0.88rem;
+    }
+
+    .cartPanel {
+        width: min(340px, calc(100vw - 1rem));
+        max-height: min(62vh, 460px);
+        overflow-y: auto;
+    }
+
+    .cartRow {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+
+    .cartRowActions {
+        justify-content: space-between;
         width: 100%;
+    }
+
+    .cartFooter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cartFooterActions {
+        justify-content: stretch;
+    }
+
+    .cartToggleBtn {
+        width: 64px;
+        min-height: 64px;
+    }
+
+    .donutModalOverlay {
+        align-items: flex-start;
+        padding: 5.5rem 0.75rem 0.75rem;
+    }
+
+    .donutModalCard {
+        width: min(100%, 720px);
+        max-height: calc(100dvh - 6.25rem);
+    }
+}
+
+@media (max-width: 560px) {
+    .floatingCartArea {
+        right: 0.5rem;
+        bottom: 0.65rem;
+    }
+
+    .floatingCartArea .cartPanelWrap {
+        width: min(310px, calc(100vw - 0.75rem));
+    }
+
+    .cartSummaryPill {
+        right: 62px;
+        bottom: 0.4rem;
+        padding: 0.45rem 0.65rem;
+        font-size: 0.82rem;
+    }
+
+    .cartToggleBtn {
+        width: 58px;
+        min-height: 58px;
+        padding: 0.75rem;
+    }
+
+    .floatingCartIcon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .cartPanel {
+        width: min(310px, calc(100vw - 0.75rem));
+        bottom: calc(100% + 0.55rem);
+        padding: 0.85rem;
+        border-radius: 22px;
+    }
+
+    .cartFooterActions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cartClearBtn,
+    .cartBuyBtn {
+        width: 100%;
+    }
+
+    .donutModalOverlay {
+        padding: 5rem 0.5rem 0.5rem;
+    }
+
+    .donutModalCard {
+        width: 100%;
+        max-height: calc(100dvh - 5.5rem);
+    }
+}
+
+@keyframes floatingDonutIdle {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes floatingDonutHop {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    45% {
+        transform: translateY(-12px) scale(1.2);
+    }
+
+    100% {
+        transform: translateY(-10px) scale(1.18);
+    }
+}
+
+@keyframes heroImageReveal {
+    from {
+        opacity: 0;
+        transform: scale(1.04);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }

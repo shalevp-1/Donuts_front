@@ -1,65 +1,351 @@
-
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+.NavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding: 1rem clamp(1rem, 3vw, 2rem) 0;
 }
 
-body {
-    font-family: 'Helvetica Neue', sans-serif;
-    background-color: #f7f7f7;
-    color: #333;
+.navBtns {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(124, 177, 209, 0.16);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(243, 250, 255, 0.94)),
+        linear-gradient(90deg, rgba(255, 214, 170, 0.08), rgba(177, 236, 212, 0.08));
+    backdrop-filter: blur(22px);
+    box-shadow: 0 22px 56px rgba(84, 121, 148, 0.1);
+}
+
+.navLeftGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 0 0 auto;
+}
+
+.brandMark,
+.menuToggle,
+.menuLink,
+.navMainLink,
+.accountToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #4b2f24;
+    transition: background-color 180ms ease, transform 180ms ease, color 180ms ease;
+}
+
+.navMainLinks {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.4rem, 2vw, 1.25rem);
+    margin-right: 0.4rem;
+    flex: 1 1 auto;
+}
+
+.navMainLink {
+    font-weight: 700;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.menuToggle {
+    border: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(235, 248, 255, 0.98));
+    cursor: pointer;
+    gap: 0.35rem;
+    flex-direction: column;
+    min-width: 66px;
+    min-height: 66px;
+    padding: 1rem;
+    border: 1px solid rgba(124, 177, 209, 0.16);
+    box-shadow: 0 12px 28px rgba(84, 121, 148, 0.1);
+}
+
+.menuToggle span {
+    width: 28px;
+    height: 2.5px;
+    border-radius: 999px;
+    background: #7a523d;
+    transition: transform 180ms ease, opacity 180ms ease;
 }
 
 .logo {
-    width: 40px;
-    
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
 }
 
-.NavBar {
-    
+.brandMark .logo {
+    animation: slowDonutSpin 16s linear infinite;
+    transform-origin: center;
+}
+
+.accountWrap {
+    position: relative;
+}
+
+.accountToggle {
+    position: relative;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 0.65rem;
+    border: 1px solid rgba(124, 177, 209, 0.16);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(234, 248, 255, 0.9));
+    color: #5a6d7b;
+    cursor: pointer;
+}
+
+.statusIcon {
+    width: 18px;
+    height: 18px;
+}
+
+.accountStatusDot {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: #38b57f;
+    box-shadow: 0 0 0 3px rgba(255, 251, 247, 0.9);
+}
+
+.accountPanel {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 0.45rem);
+    min-width: 220px;
+    padding: 0.9rem;
+    border-radius: 24px;
+    border: 1px solid rgba(124, 177, 209, 0.16);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 250, 255, 0.96));
+    box-shadow: 0 24px 60px rgba(84, 121, 148, 0.14);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px) scale(0.98);
+    transform-origin: top left;
+    transition: opacity 220ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.accountWrap.open .accountPanel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.accountPanelLabel {
+    margin: 0;
+    color: #98735a;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.accountPanel strong {
+    display: block;
+    margin-top: 0.4rem;
+    color: #35231b;
+    word-break: break-word;
+}
+
+.accountRoleBadge {
+    display: inline-flex;
+    margin-top: 0.6rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(155, 226, 255, 0.18);
+    color: #39667b;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.accountLogoutBtn,
+.menuActionBtn {
+    width: 100%;
+    margin-top: 0.8rem;
+    border: 0;
+    background: linear-gradient(90deg, rgba(255, 214, 170, 0.18), rgba(177, 236, 212, 0.16));
+    color: #7a523d;
+    cursor: pointer;
+    font: inherit;
+}
+
+.menuWrap {
+    position: relative;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    
-    background-color: #000;
-    padding: 20px;
-    text-align: center;
-    
+    padding: 0 0.3rem 0.8rem;
+    margin: 0 0 -0.8rem 0;
 }
 
-
-.navList {
-    list-style: none;
-    padding: 0;
+.menuPanel {
+    position: absolute;
+    right: 0;
+    top: calc(100% - 0.15rem);
+    display: grid;
+    gap: 0.35rem;
+    min-width: 230px;
+    padding: 0.7rem;
+    border-radius: 28px;
+    border: 1px solid rgba(124, 177, 209, 0.16);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 250, 255, 0.96));
+    box-shadow: 0 24px 60px rgba(84, 121, 148, 0.14);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px) scale(0.98);
+    transform-origin: top right;
+    transition: opacity 220ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-
-.navItem {
-    margin: 0 100px;
-    font-size: 16px;
-    display: inline-block;
+.menuWrap.open .menuPanel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
 }
 
-.navItem a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 16px;
-    transition: color 0.3s;
-   
+.menuWrap.open .menuToggle span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
 }
 
+.menuWrap.open .menuToggle span:nth-child(2) {
+    opacity: 0;
+}
 
-.navItem:hover a {
-    color: #007aff;
-   
-    transition: color 0.3s;
-   
+.menuWrap.open .menuToggle span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.menuLink {
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 50px;
+    padding: 0.95rem 1rem;
+    border-radius: 18px;
+    font-size: 1rem;
+    transition: background-color 180ms ease, transform 180ms ease, color 180ms ease;
+}
+
+.menuActionBtn {
+    justify-content: flex-start;
+}
+
+.menuToggle:hover,
+.menuLink:hover,
+.navMainLink:hover,
+.brandMark:hover,
+.accountToggle:hover,
+.accountLogoutBtn:hover {
+    background: rgba(155, 226, 255, 0.12);
+    transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {
     .NavBar {
-        padding-right: 80px;
-        padding-left: 80px;
+        padding-top: 0.75rem;
+    }
+
+    .navBtns {
+        border-radius: 28px;
+        gap: 0.6rem;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.65rem;
+    }
+
+    .navMainLinks {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem;
+        margin-right: 0;
+    }
+
+    .navLeftGroup {
+        gap: 0.35rem;
+    }
+
+    .menuToggle {
+        min-width: 60px;
+        min-height: 60px;
+    }
+
+    .navMainLink {
+        min-height: 38px;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.88rem;
+    }
+
+    .brandMark {
+        min-height: 38px;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .accountToggle {
+        min-width: 42px;
+        min-height: 42px;
+        padding: 0.55rem;
+    }
+
+    .logo {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navBtns {
+        gap: 0.4rem;
+    }
+
+    .navMainLinks {
+        gap: 0.2rem;
+    }
+
+    .navMainLink {
+        padding: 0.45rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .menuToggle {
+        min-width: 54px;
+        min-height: 54px;
+        padding: 0.85rem;
+    }
+
+    .accountPanel {
+        left: -0.25rem;
+        min-width: 190px;
+    }
+
+    .menuToggle span {
+        width: 22px;
+    }
+}
+
+@keyframes slowDonutSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }

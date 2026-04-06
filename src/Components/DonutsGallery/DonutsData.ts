@@ -1,5 +1,5 @@
 export const donutsArr = [
-    {
+   /*  {
         "id": 1,
         "name": "Chocolate Glazed Donut",
         "description": "A classic donut with a rich chocolate glaze.",
@@ -15,7 +15,7 @@ export const donutsArr = [
         "price": 3.00,
         "ingredients": ["Flour", "Sugar", "Cocoa Powder", "Eggs", "Milk", "Vanilla", "Oil", "Chocolate Chips"],
         "calories": 350,
-        "image": "https://frenchgourmand.eu/3250-large_default/double-chocolate-donuts-60g36-poland-frozen.jpg"
+        "image": "https://images.pexels.com/photos/33066207/pexels-photo-33066207.jpeg?cs=srgb&dl=pexels-buselliyy-33066207.jpg&fm=jpg"
     },
     {
         "id": 3,
@@ -150,7 +150,7 @@ export const donutsArr = [
         "price": 3.15,
         "ingredients": ["Flour", "Sugar", "Pistachios", "Eggs", "Milk", "Vanilla", "Oil"],
         "calories": 320,
-        "image": "https://www.dixiecrystals.com/sites/default/files/styles/recipe_image_node_full/public/recipe/Baked-Pistachio-Donuts-dixie.jpg?itok=9m5pZzOD"
+        "image": "https://images.services.kitchenstories.io/_LQblJ54vUraE9vo5Vzcpl0RgCQ=/3840x0/filters:quality(85)/images.kitchenstories.io/recipeImages/RP16_02_13_doughnuts_4x3.jpg"
     }
-
+ */
 ];

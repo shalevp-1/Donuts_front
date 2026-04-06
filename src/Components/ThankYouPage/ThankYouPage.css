@@ -1,0 +1,108 @@
+.ThankYouPage {
+    min-height: 100vh;
+    padding: 8.5rem 1.25rem 3rem;
+    background:
+        radial-gradient(circle at top left, rgba(255, 220, 194, 0.6), transparent 28%),
+        radial-gradient(circle at top right, rgba(212, 227, 255, 0.62), transparent 30%),
+        linear-gradient(180deg, #f7f1eb 0%, #eef3f8 100%);
+}
+
+.thankYouCard {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: clamp(1.6rem, 3vw, 2.6rem);
+    border-radius: 34px;
+    border: 1px solid rgba(139, 103, 83, 0.12);
+    background: rgba(255, 250, 245, 0.9);
+    box-shadow: 0 24px 60px rgba(90, 63, 45, 0.09);
+}
+
+.thankYouEyebrow {
+    margin: 0 0 0.55rem;
+    color: #8b6f60;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.thankYouCard h1 {
+    margin: 0;
+    color: #261c17;
+    font-size: clamp(2.1rem, 4vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+}
+
+.thankYouLead {
+    margin: 1rem 0 0;
+    max-width: 42rem;
+    color: #675850;
+    line-height: 1.7;
+}
+
+.thankYouStats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.thankYouStats article {
+    padding: 1rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.thankYouStats span {
+    display: block;
+    color: #8a6a5c;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.thankYouStats strong {
+    display: block;
+    margin-top: 0.4rem;
+    color: #2d211b;
+    font-size: 1.45rem;
+}
+
+.thankYouActions {
+    display: flex;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+.thankYouPrimary,
+.thankYouSecondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.9rem 1.15rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.thankYouPrimary {
+    background: #7d4f3d;
+    color: #fff8f2;
+}
+
+.thankYouSecondary {
+    background: rgba(125, 79, 61, 0.12);
+    color: #714d3d;
+}
+
+@media (max-width: 760px) {
+    .thankYouStats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .thankYouActions {
+        flex-direction: column;
+    }
+}

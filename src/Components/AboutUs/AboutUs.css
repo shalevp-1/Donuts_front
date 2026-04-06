@@ -1,39 +1,137 @@
-.aboutUsContainer {
-    padding: 20px;
-    background-color: #bad7d8;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  
-  .aboutUsContent {
-    display: flex;
-    flex-direction: column;
+.aboutPage {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 1.5rem clamp(1rem, 3vw, 2.5rem) 4rem;
+}
+
+.aboutHero,
+.aboutStoryCard,
+.aboutDetailsPanel {
+    border-radius: 38px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 251, 255, 0.92));
+    box-shadow: 0 24px 80px rgba(84, 121, 148, 0.12);
+}
+
+.aboutHero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+    gap: 1.5rem;
     align-items: center;
-    justify-content: space-between;
-  }
-  
-  .aboutUsText {
-    max-width: 600px;
-    text-align: center;
-  }
-  
-  .aboutUsImage img {
+    padding: clamp(1.3rem, 3vw, 2rem);
+}
+
+.aboutIntro {
+    padding: clamp(1rem, 3vw, 2rem);
+    text-align: left;
+}
+
+.aboutIntro h1 {
+    margin: 0;
+    max-width: 12ch;
+    font-size: clamp(2.8rem, 7vw, 5.4rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    color: #31251f;
+}
+
+.aboutLead {
+    max-width: 38rem;
+    margin: 1.25rem 0 0;
+    color: #6f665d;
+    font-size: 1.06rem;
+    line-height: 1.8;
+}
+
+.aboutHeroImageWrap {
+    overflow: hidden;
+    min-height: 520px;
+    border-radius: 30px;
+}
+
+.aboutHeroImage {
     width: 100%;
-    border-radius: 8px;
-    margin-top: 20px;
-  }
-  
-  .contactInfo {
-    margin-top: 30px;
-    text-align: center;
-  }
-  
-  .contactInfo h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .contactInfo p {
-    margin: 5px 0;
-  }
-  
+    height: 100%;
+    object-fit: cover;
+}
+
+.aboutStoryGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.6rem;
+    margin-top: 3rem;
+}
+
+.aboutStoryCard {
+    padding: 1.8rem;
+    text-align: left;
+}
+
+.aboutStoryCard h2 {
+    margin: 0;
+    font-size: 1.9rem;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: #31251f;
+}
+
+.aboutStoryCard p {
+    margin: 1rem 0 0;
+    color: #6f665d;
+    line-height: 1.8;
+}
+
+.aboutDetailsPanel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 3rem;
+    padding: 1.8rem 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    border-top: 1px solid rgba(124, 177, 209, 0.18);
+}
+
+.aboutDetailsText p {
+    margin: 0;
+    text-align: left;
+    color: #6b645d;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.contactInfo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 0.9rem;
+    text-align: left;
+}
+
+.contactInfo div {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.contactInfo strong {
+    display: block;
+    color: #31251f;
+    line-height: 1.6;
+}
+
+@media (max-width: 980px) {
+    .aboutHero,
+    .aboutStoryGrid,
+    .aboutDetailsPanel {
+        grid-template-columns: 1fr;
+    }
+
+    .contactInfo {
+        grid-template-columns: 1fr;
+    }
+
+    .aboutHeroImageWrap {
+        min-height: 360px;
+    }
+}

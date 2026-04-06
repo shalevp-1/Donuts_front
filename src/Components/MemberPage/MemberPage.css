@@ -1,0 +1,297 @@
+.MemberPage {
+    min-height: 100vh;
+    padding: 8.5rem 1.25rem 3rem;
+    background:
+        radial-gradient(circle at top left, rgba(255, 213, 181, 0.35), transparent 32%),
+        radial-gradient(circle at top right, rgba(255, 232, 210, 0.7), transparent 28%),
+        linear-gradient(180deg, #fff9f4 0%, #fff3ea 100%);
+}
+
+.memberShell {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.memberCard,
+.memberHero,
+.memberSection {
+    border: 1px solid rgba(152, 108, 82, 0.14);
+    border-radius: 32px;
+    background: rgba(255, 252, 248, 0.9);
+    box-shadow: 0 24px 60px rgba(124, 83, 56, 0.09);
+}
+
+.memberCard {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.memberHero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 1.5rem;
+    align-items: end;
+    padding: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.memberEyebrow {
+    margin: 0 0 0.7rem;
+    color: #a06649;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.memberHero h1,
+.memberCard h1 {
+    margin: 0;
+    color: #33231c;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.05;
+}
+
+.memberLead,
+.memberCard p {
+    margin: 1rem 0 0;
+    max-width: 58ch;
+    color: #6b4d40;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.memberTotalCard {
+    padding: 1.3rem;
+    border-radius: 26px;
+    background: linear-gradient(180deg, rgba(255, 238, 223, 0.95), rgba(255, 228, 205, 0.92));
+    border: 1px solid rgba(152, 108, 82, 0.14);
+}
+
+.memberTotalCard span {
+    display: block;
+    color: #8f6047;
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.memberTotalCard strong {
+    display: block;
+    margin-top: 0.45rem;
+    color: #34231a;
+    font-size: 2rem;
+}
+
+.memberSection {
+    padding: 1.5rem;
+}
+
+.memberStatsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.memberStatCard {
+    padding: 1.2rem;
+    border-radius: 26px;
+    border: 1px solid rgba(152, 108, 82, 0.14);
+    background: rgba(255, 252, 248, 0.9);
+    box-shadow: 0 18px 45px rgba(124, 83, 56, 0.08);
+}
+
+.memberStatCard span {
+    display: block;
+    color: #8f6047;
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.memberStatCard strong {
+    display: block;
+    margin-top: 0.45rem;
+    color: #34231a;
+    font-size: 1.8rem;
+}
+
+.memberSectionHead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.memberSectionHead h2,
+.memberEmptyState h3,
+.couponCard h3,
+.purchaseCopy h3 {
+    margin: 0;
+    color: #34231b;
+}
+
+.memberSectionHead span,
+.purchaseCopy p,
+.couponCard p,
+.memberEmptyState p {
+    color: #7b5a4b;
+}
+
+.couponGrid,
+.purchaseList {
+    display: grid;
+    gap: 1rem;
+}
+
+.couponGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.couponCard {
+    padding: 1.2rem;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255, 247, 239, 0.95), rgba(255, 236, 219, 0.9));
+    border: 1px solid rgba(152, 108, 82, 0.12);
+}
+
+.couponCode {
+    margin: 0 0 0.65rem;
+    color: #b8542c;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.memberEmptyState {
+    padding: 1.5rem;
+    border-radius: 24px;
+    background: rgba(255, 247, 240, 0.8);
+    border: 1px dashed rgba(152, 108, 82, 0.22);
+}
+
+.purchaseCard {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.95rem 1rem;
+    border-radius: 22px;
+    background: rgba(255, 249, 244, 0.84);
+    border: 1px solid rgba(152, 108, 82, 0.12);
+}
+
+.purchaseOrderCard {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+}
+
+.purchaseOrderHead,
+.purchaseItemRow,
+.purchaseOrderMeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.purchaseOrderMeta {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    color: #7b5a4b;
+    font-weight: 600;
+}
+
+.purchaseItemsList {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.purchaseItemRow {
+    padding: 0.85rem;
+    border-radius: 20px;
+    background: rgba(255, 245, 236, 0.8);
+}
+
+.purchaseItemRow img {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.purchaseCard img {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    object-fit: cover;
+}
+
+.purchaseCopy {
+    min-width: 0;
+}
+
+.purchaseCopy p {
+    margin: 0.3rem 0 0;
+}
+
+.purchaseCard strong {
+    color: #3d281e;
+    font-size: 1.05rem;
+}
+
+.memberPrimaryLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    min-height: 46px;
+    padding: 0.8rem 1.15rem;
+    border-radius: 999px;
+    background: #8e4f35;
+    color: #fff7f2;
+    text-decoration: none;
+}
+
+@media (max-width: 760px) {
+    .MemberPage {
+        padding-top: 7.75rem;
+    }
+
+    .memberHero {
+        grid-template-columns: 1fr;
+    }
+
+    .memberStatsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .memberSectionHead {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .purchaseCard {
+        grid-template-columns: 60px minmax(0, 1fr);
+    }
+
+    .purchaseCard strong {
+        grid-column: 2;
+    }
+
+    .purchaseCard img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .purchaseOrderHead,
+    .purchaseItemRow {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
