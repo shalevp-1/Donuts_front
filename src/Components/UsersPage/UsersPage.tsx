@@ -202,7 +202,7 @@ export default function UsersPage() {
                         <p className="usersEyebrow">Members</p>
                         <h1>All signed-up users in one place.</h1>
                         <p className="usersLead">
-                            Logged in as <strong>{accountName}</strong> with the role of <strong>{accountRole}</strong>. This page shows the accounts currently stored in your SQL login table.
+                            Logged in as <strong>{accountName}</strong> with the role of <strong>{accountRole}</strong>. ALl of the users that have signed up
                         </p>
                     </div>
                     <div className="usersHeroStat">

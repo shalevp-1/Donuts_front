@@ -64,7 +64,8 @@ const DonutsV = () => {
               <div>
                 <p className="adminEyebrow">Dashboard</p>
                 <h1>Hello {name}!</h1>
-                <p className="adminLead">Manage your donut collection, refresh listings, and keep your bakery inventory polished as an <strong>{role}</strong>.</p>
+                <p className="adminLead">Add Donuts or update them as you wish. You are logged in with the role of
+                   <strong>{role}</strong>.</p>
               </div>
               <div className="adminTopbarActions">
                 <Link to="/donutsadd" className='adminPrimaryAction'>Add new donut</Link>
