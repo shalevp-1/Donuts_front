@@ -161,15 +161,19 @@
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(245, 251, 255, 0.92));
     border: 1px solid rgba(124, 177, 209, 0.14);
     box-shadow: 0 20px 64px rgba(84, 121, 148, 0.12);
+    
+    
 }
 
 .specialCard img {
+    
     
     border-radius: 340px;
     
 }
 
 .specialCard img:hover {
+    border-radius: 0;
     transform: translateY(-10px) scale(1.18);
     box-shadow: 0 24px 44px rgba(84, 121, 148, 0.2);
     border-color: rgba(125, 179, 210, 0.34);

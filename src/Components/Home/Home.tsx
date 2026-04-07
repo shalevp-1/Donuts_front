@@ -61,6 +61,7 @@ export default function Home() {
               className='specialImage'
             />
             <div className='specialCopy'>
+              <br />
               <h3>Lemon Poppyseed Donut</h3>
               <p>Fresh citrus notes with a clean finish and soft bakery texture.</p>
             </div>
@@ -73,6 +74,7 @@ export default function Home() {
               className='specialImage'
             />
             <div className='specialCopy'>
+              <br />
               <h3>Strawberry Cream Donut</h3>
               <p>A sweeter, creamier choice for anyone chasing dessert-first energy.</p>
             </div>
