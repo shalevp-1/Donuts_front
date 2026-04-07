@@ -7,7 +7,7 @@ export default function AboutUs() {
     <div className="aboutPage">
       <section className="aboutHero">
         <div className="aboutIntro">
-          <h1>Fresh baking, calm design, and donuts worth slowing down for.</h1>
+          <h1>Dounts! Dounts everywhere!</h1>
           <p className="aboutLead">
             Shalev&apos;s Bakery is built around simple ingredients, careful craft,
             and a storefront that feels just as refined as what comes out of the oven.
@@ -47,13 +47,12 @@ export default function AboutUs() {
       <section className="aboutDetailsPanel">
         <div className="aboutDetailsText">
           <p>
-            From morning coffee runs to celebration boxes, each bake is made to
-            feel fresh, memorable, and a bit elevated.
+            This site uses React, TypeScript, and a Node/Express backend MySQL database 
           </p>
         </div>
         <div className="contactInfo">
           <div>
-            <strong>123 Baker Street, Sweetville, CA 98765</strong>
+            <strong>Shalev Bakery</strong>
           </div>
           <div>
             <strong>(050) 233-6023</strong>

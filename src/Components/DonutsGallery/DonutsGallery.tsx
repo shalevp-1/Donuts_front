@@ -283,11 +283,12 @@ export default function DonutsGallery() {
 
             <div className="donutsHero">
                 <div className="donutsHeroCopy">
-                    <p className="heroEyebrow">Live Bakery Counter</p>
-                    <h1>Signature donuts from today&apos;s counter.</h1>
+                    <p className="heroEyebrow">Our donuts, your SQL menu.</p>
+                    <h1>Donuts made with data.</h1>
                     <p className="heroText">
-                        A brighter storefront view powered by your SQL menu, with a rotating spotlight, cleaner spacing, and a calmer way to browse every donut.
+                        Have a suggestion for a new flavor? Want to see the nutritional info for your favorites? Our menu is powered by a live connection to your database so it's always up to date and open to your input!
                     </p>
+                    <p>Contact us at <a href="mailto:shalevpecksp@gmail.com">shalevpecksp@gmail.com</a></p>
                     <p className="heroSummary">{gallerySummary}</p>
                     <div className="heroStatRow">
                         <div className="heroStatCard">

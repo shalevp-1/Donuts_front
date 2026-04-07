@@ -25,10 +25,9 @@ export default function Home() {
     <div className='homePage'>
       <section className='homeHero'>
         <div className='homeHeroCopy'>
-          <h1>Elegant donuts, warm coffee, a smoother bakery experience.</h1>
+          <h1>Donuts that look as good as they taste!</h1>
           <p className='homeLead'>
-            Soft color, real depth, and a little motion so the page feels alive
-            instead of cramped.
+             warm and fresh, just like you like them.
           </p>
           <div className='homeActions'>
             <Link to='/donuts' className='primaryHomeAction'>Browse Donuts</Link>
@@ -90,14 +89,12 @@ export default function Home() {
           />
         </div>
         <div className='storyCopy'>
-          <h2>The page opens up as you move through it.</h2>
+          <h2>Donuts that feel like a treat, not a rush.</h2>
           <p>
-            Instead of dropping everything on screen at once, the home page now
-            reveals the next section as you scroll so the whole experience feels calmer.
+            Instead of a busy, crowded design, we went for more space and a calmer vibe that lets the food speak for itself.
           </p>
           <p>
-            Images slide in gently, text rises into place, and the layout has more
-            air around it.
+            Fresh, simple, and just a little bit elevated — the way a good bakery should feel
           </p>
         </div>
       </section>
@@ -111,10 +108,9 @@ export default function Home() {
           />
         </div>
         <div className='storyCopy'>
-          <h2>More color, less noise.</h2>
+          <h2>Home made quality with a polished presentation.</h2>
           <p>
-            The design is still smooth and premium, but now it feels warmer and
-            more alive instead of just white cards and labels everywhere.
+           A taste that will remind you of the best local spots, with a look that feels just as good as what comes out of the oven.
           </p>
           <p>
             That gives the bakery more personality while keeping the polished feel.
@@ -124,7 +120,7 @@ export default function Home() {
 
       <section className='homePromo revealOnScroll'>
         <div>
-          <h2>See every donut in the gallery.</h2>
+          <h2>See every donut in our Gallery!</h2>
         </div>
         <Link to='/donuts' className='promoLink'>Open donuts page</Link>
       </section>

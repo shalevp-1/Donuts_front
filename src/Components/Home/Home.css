@@ -125,6 +125,9 @@
 }
 
 .sectionHeading {
+    display: center;
+    flex-direction: center;
+    align-items: center;
     max-width: 42rem;
     margin-bottom: 1.6rem;
 }
