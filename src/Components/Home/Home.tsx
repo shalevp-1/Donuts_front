@@ -25,7 +25,7 @@ export default function Home() {
     <div className='homePage'>
       <section className='homeHero'>
         <div className='homeHeroCopy'>
-          <h1>Donuts that look as good as they taste! one bite and you&apos;ll be hooked! dont miss out on the best donuts in town!</h1>
+          <h1>Donuts that look as good as they taste! one bite and you&apos;ll be hooked!</h1>
           <p className='homeLead'>
              warm and fresh, just like you like them.
           </p>
@@ -42,7 +42,7 @@ export default function Home() {
           />
           <div className='heroGlassCard'>
             <strong>Freshly baked, just for you! </strong>
-            <p>Our donuts are made with the finest ingredients and a whole lot of love, ensuring every bite is a delightful experience. Whether you crave classic flavors or adventurous combinations, we have something to satisfy every sweet tooth. Come taste the magic of our bakery and discover your new favorite treat!</p>
+            <p>Our donuts are made with the finest ingredients and a whole lot of love, ensuring every bite is a delightful experience. !</p>
           </div>
         </div>
       </section>
