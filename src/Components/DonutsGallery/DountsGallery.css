@@ -266,6 +266,7 @@
     z-index: 1;
 }
 
+
 .floatingSelectedDonut:hover {
     transform: translateY(-10px) scale(1.18);
     box-shadow: 0 24px 44px rgba(84, 121, 148, 0.2);
