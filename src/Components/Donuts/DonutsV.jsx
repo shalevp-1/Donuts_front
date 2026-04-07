@@ -49,7 +49,7 @@ const DonutsV = () => {
   };
 
   const handleDeleteCookie = () => {
-    api.get("/logout")
+    api.post("/logout")
     .then(() => {
       navigate('/login');
     }).catch(err => console.log(err))

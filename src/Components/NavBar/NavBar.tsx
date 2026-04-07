@@ -106,7 +106,7 @@ export default function NavBar(props: { items: INavItem[] }) {
 
     const handleLogout = async () => {
         try {
-            await api.get("/logout");
+            await api.post("/logout");
         } catch {
             // Keep UX smooth even if logout cleanup fails server-side.
         } finally {
