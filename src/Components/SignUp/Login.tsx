@@ -99,8 +99,8 @@ export default function Login() {
         <div className='Login'>
             <div className="authShell">
                 <div className="authIntro">
-                    <h1>Welcome back</h1>
-                    <p>Sign in to manage your bakery space and keep things moving.</p>
+                    <h1>Welcome!</h1>
+                    <p>Sign in to manage your bakery space and keep things moving!</p>
                 </div>
                 <div className="form authCard">
                 <form onSubmit={handleSubmit}>

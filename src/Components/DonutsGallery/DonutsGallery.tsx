@@ -288,7 +288,7 @@ export default function DonutsGallery() {
                     <p className="heroText">
                         Have a suggestion for a new flavor? Want to see the nutritional info for your favorites? Our menu is powered by a live connection to your database so it's always up to date and open to your input!
                     </p>
-                    <p>Contact us at <a href="mailto:shalevpecksp@gmail.com">shalevpecksp@gmail.com</a></p>
+                    <p>Contact us at <a href="mailto:shalevpecksp@hotmail.com">shalevpecksp@hotmail.com</a></p>
                     <p className="heroSummary">{gallerySummary}</p>
                     <div className="heroStatRow">
                         <div className="heroStatCard">
