@@ -2,6 +2,8 @@
 
 Frontend for **Donuts for You**, a full-stack e-commerce web application for browsing donuts, managing a cart, and completing purchases. Built with React and TypeScript, the app connects to a Node.js/Express backend and a MySQL database.
 
+## Note: The backend is hosted on a cloud service(Render) with cold-start behavior, so the initial load may take a few seconds.
+
 ## Live Demo
 Frontend: https://dountstime.netlify.app/ 
 
