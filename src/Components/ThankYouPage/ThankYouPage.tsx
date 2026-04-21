@@ -15,7 +15,7 @@ export default function ThankYouPage() {
     return (
         <div className="ThankYouPage">
             <div className="thankYouCard">
-                <p className="thankYouEyebrow">Purchase complete</p>
+                <p className="thankYouTitle">Purchase complete</p>
                 <h1>Thank you for your purchase.</h1>
                 <p className="thankYouLead">
                     Your donuts are officially on the way. We saved the order to your account and updated your rewards automatically.

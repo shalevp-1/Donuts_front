@@ -2,9 +2,9 @@
     min-height: 100vh;
     padding: 8.5rem 1.25rem 3rem;
     background:
-        radial-gradient(circle at top left, rgba(255, 220, 194, 0.6), transparent 28%),
-        radial-gradient(circle at top right, rgba(212, 227, 255, 0.62), transparent 30%),
-        linear-gradient(180deg, #f7f1eb 0%, #eef3f8 100%);
+        radial-gradient(circle at top left, rgba(220, 239, 255, 0.68), transparent 28%),
+        radial-gradient(circle at top right, rgba(205, 226, 255, 0.62), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f3f9ff 100%);
 }
 
 .thankYouCard {
@@ -12,14 +12,14 @@
     margin: 0 auto;
     padding: clamp(1.6rem, 3vw, 2.6rem);
     border-radius: 34px;
-    border: 1px solid rgba(139, 103, 83, 0.12);
-    background: rgba(255, 250, 245, 0.9);
-    box-shadow: 0 24px 60px rgba(90, 63, 45, 0.09);
+    border: 1px solid rgba(124, 177, 209, 0.12);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 24px 60px rgba(84, 121, 148, 0.09);
 }
 
-.thankYouEyebrow {
+.thankYouTitle {
     margin: 0 0 0.55rem;
-    color: #8b6f60;
+    color: #6f8ea3;
     font-size: 0.88rem;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -28,7 +28,7 @@
 
 .thankYouCard h1 {
     margin: 0;
-    color: #261c17;
+    color: #203040;
     font-size: clamp(2.1rem, 4vw, 4rem);
     line-height: 0.98;
     letter-spacing: -0.04em;
@@ -37,7 +37,7 @@
 .thankYouLead {
     margin: 1rem 0 0;
     max-width: 42rem;
-    color: #675850;
+    color: #60778a;
     line-height: 1.7;
 }
 
@@ -51,12 +51,13 @@
 .thankYouStats article {
     padding: 1rem;
     border-radius: 22px;
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(245, 251, 255, 0.86);
+    border: 1px solid rgba(124, 177, 209, 0.12);
 }
 
 .thankYouStats span {
     display: block;
-    color: #8a6a5c;
+    color: #6f8ea3;
     font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -65,7 +66,7 @@
 .thankYouStats strong {
     display: block;
     margin-top: 0.4rem;
-    color: #2d211b;
+    color: #223546;
     font-size: 1.45rem;
 }
 
@@ -88,13 +89,13 @@
 }
 
 .thankYouPrimary {
-    background: #7d4f3d;
-    color: #fff8f2;
+    background: linear-gradient(135deg, #8edbff, #76b9e7);
+    color: #f8fdff;
 }
 
 .thankYouSecondary {
-    background: rgba(125, 79, 61, 0.12);
-    color: #714d3d;
+    background: rgba(124, 177, 209, 0.12);
+    color: #557487;
 }
 
 @media (max-width: 760px) {

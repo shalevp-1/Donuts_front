@@ -4,6 +4,7 @@ import './NavBar.css'
 import { INavItem } from "./NavItemsData";
 import { clearCartCookie } from "../../Utils/cartCookie";
 import api from "../../Utils/apiClient";
+import { fetchAuthStatus } from "../../Utils/authStatus";
 
 function StatusIcon() {
     return (
@@ -27,12 +28,12 @@ export default function NavBar(props: { items: INavItem[] }) {
 
     const alwaysVisibleItems = useMemo(() => {
         const baseItems = props.items.filter((item) =>
-            ["/", "/aboutus", "/donuts"].includes(item.urlStr.toLowerCase())
+            ["/", "/aboutus", "/donuts", "/signup", "/login"].includes(item.urlStr.toLowerCase())
         );
 
         if (isAuthenticated && accountRole === 'admin') {
             return [
-                ...baseItems,
+                ...baseItems.filter((item) => !['/login', '/signup'].includes(item.urlStr.toLowerCase())),
                 { displayStr: "My Perks", urlStr: "/my-perks" },
                 { displayStr: "Manage", urlStr: "/donutsv" },
                 { displayStr: "Users", urlStr: "/users" }
@@ -41,7 +42,7 @@ export default function NavBar(props: { items: INavItem[] }) {
 
         if (isAuthenticated) {
             return [
-                ...baseItems,
+                ...baseItems.filter((item) => !['/login', '/signup'].includes(item.urlStr.toLowerCase())),
                 { displayStr: "My Perks", urlStr: "/my-perks" }
             ];
         }
@@ -64,19 +65,20 @@ export default function NavBar(props: { items: INavItem[] }) {
     }, [isAuthenticated, props.items]);
 
     useEffect(() => {
+        let isMounted = true;
+
         const checkAuth = async () => {
-            try {
-                const res = await api.get('/me');
-                if (res.data.status === "Success") {
-                    setIsAuthenticated(true);
-                    setAccountName(res.data.name || 'Connected');
-                    setAccountRole(res.data.role || 'user');
-                } else {
-                    setIsAuthenticated(false);
-                    setAccountName('');
-                    setAccountRole('');
-                }
-            } catch {
+            const res = await fetchAuthStatus();
+
+            if (!isMounted) {
+                return;
+            }
+
+            if (res.authenticated) {
+                setIsAuthenticated(true);
+                setAccountName(res.name || 'Connected');
+                setAccountRole(res.role || 'user');
+            } else {
                 setIsAuthenticated(false);
                 setAccountName('');
                 setAccountRole('');
@@ -84,6 +86,10 @@ export default function NavBar(props: { items: INavItem[] }) {
         };
 
         checkAuth();
+
+        return () => {
+            isMounted = false;
+        };
     }, [location.pathname]);
 
     useEffect(() => {
@@ -155,7 +161,11 @@ export default function NavBar(props: { items: INavItem[] }) {
                 <div className="navMainLinks">
                     {alwaysVisibleItems.map((curr) => {
                         return (
-                            <Link to={curr.urlStr} className="navMainLink" key={curr.urlStr}>
+                            <Link
+                                to={curr.urlStr}
+                                className="navMainLink"
+                                key={curr.urlStr}
+                            >
                                 {curr.displayStr}
                             </Link>
                         )

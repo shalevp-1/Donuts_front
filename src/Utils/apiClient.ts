@@ -24,7 +24,10 @@ api.interceptors.request.use((config) => {
         };
     }
 
-    if (typeof config.url === 'string' && (config.url.startsWith('/me') || config.url.startsWith('/logout'))) {
+    if (
+        typeof config.url === 'string' &&
+        (config.url.startsWith('/me') || config.url.startsWith('/logout') || config.url.startsWith('/auth/status') || config.url.startsWith('/health/status'))
+    ) {
         const headers = AxiosHeaders.from(config.headers || {});
         headers.set('Cache-Control', 'no-cache');
         headers.set('Pragma', 'no-cache');

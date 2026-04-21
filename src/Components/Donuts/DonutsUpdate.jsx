@@ -69,7 +69,7 @@ const DonutsUpdate = () => {
   return (
     <div className='donutAdminPage'>
       <div className='donutFormCard'>
-      <p className='adminEyebrow'>Admin</p>
+      <p className='adminTitle'>Admin</p>
       <h1>Update The Donut</h1>
       <p className='adminLead'>Edit the donut details and save them back to MySQL.</p>
       {message && <div className={`adminMessage ${message.type}`}>{message.text}</div>}

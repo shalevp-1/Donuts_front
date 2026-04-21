@@ -1,20 +1,16 @@
-
-import React from 'react';
 import './AboutUs.css';
 
 export default function AboutUs() {
   return (
     <div className="aboutPage">
-      <section className="aboutHero">
+      <section className="aboutOne">
         <div className="aboutIntro">
+          <p className="aboutOneTitle">About Shalev's Bakery</p>
           <h1>Dounts! Dounts everywhere!</h1>
           <p className="aboutLead">
             Shalev&apos;s Bakery is built around simple ingredients, careful craft,
             and a storefront that feels just as refined as what comes out of the oven.
           </p>
-        </div>
-        <div className="aboutHeroImageWrap">
-          <img src="https://i.insider.com/5ba398469c888d0f2c8b4567?width=700" alt="Bakery Interior" className="aboutHeroImage" />
         </div>
       </section>
 
@@ -60,6 +56,5 @@ export default function AboutUs() {
         </div>
       </section>
     </div>
-  )};
-
-
+  );
+}

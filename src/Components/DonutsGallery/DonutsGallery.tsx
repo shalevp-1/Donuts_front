@@ -281,25 +281,25 @@ export default function DonutsGallery() {
                 </button>
             )}
 
-            <div className="donutsHero">
-                <div className="donutsHeroCopy">
-                    <p className="heroEyebrow">Our donuts, your SQL menu.</p>
+            <div className="donutsOne">
+                <div className="donutsOneCopy">
+                    <p className="oneTitle">Our donuts, your SQL menu.</p>
                     <h1>Donuts made with data.</h1>
-                    <p className="heroText">
+                    <p className="oneText">
                         Have a suggestion for a new flavor? Want to see the nutritional info for your favorites? Our menu is powered by a live connection to your database so it's always up to date and open to your input!
                     </p>
-                    <p>Contact us at <a href="mailto:shalevpecksp@hotmail.com">shalevpecksp@hotmail.com</a></p>
-                    <p className="heroSummary">{gallerySummary}</p>
-                    <div className="heroStatRow">
-                        <div className="heroStatCard">
+                    <p className="oneContact">Contact us at <a href="mailto:shalevpecksp@hotmail.com">shalevpecksp@hotmail.com</a></p>
+                    <p className="oneSummary">{gallerySummary}</p>
+                    <div className="oneStatRow">
+                        <div className="oneStatCard">
                             <span>Live menu</span>
                             <strong>{donuts.length}</strong>
                         </div>
-                        <div className="heroStatCard">
+                        <div className="oneStatCard">
                             <span>Average price</span>
                             <strong>${averagePrice.toFixed(2)}</strong>
                         </div>
-                        <div className="heroStatCard">
+                        <div className="oneStatCard">
                             <span>Spotlight now</span>
                             <strong>{theClickedCard?.name ?? 'No pick yet'}</strong>
                         </div>

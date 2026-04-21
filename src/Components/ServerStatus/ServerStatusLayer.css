@@ -1,0 +1,126 @@
+.serverStatusLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2600;
+}
+
+.serverNotice {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  width: min(94vw, 34rem);
+}
+
+.serverNoticeCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 1.4rem;
+  border: 1px solid rgba(111, 84, 68, 0.14);
+  background: rgba(255, 251, 246, 0.94);
+  box-shadow: 0 16px 48px rgba(111, 84, 68, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.serverNotice.warning .serverNoticeCard {
+  background: rgba(255, 246, 240, 0.96);
+}
+
+.serverNotice.success .serverNoticeCard {
+  background: rgba(235, 255, 241, 0.98);
+  border-color: rgba(54, 150, 91, 0.18);
+  box-shadow: 0 16px 48px rgba(54, 150, 91, 0.16);
+}
+
+.serverNotice.success .serverNoticeLabel {
+  color: #2f8f56;
+}
+
+.serverNotice.success .serverNoticeText {
+  color: #215e3c;
+}
+
+.serverNoticeDonut {
+  width: 4.2rem;
+  height: 4.2rem;
+  flex: 0 0 auto;
+  object-fit: contain;
+  animation: donut-spin 2.8s linear infinite;
+  filter: drop-shadow(0 10px 12px rgba(111, 84, 68, 0.18));
+}
+
+.serverNoticeCopy {
+  min-width: 0;
+}
+
+.serverNoticeLabel {
+  margin: 0 0 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8f6b54;
+}
+
+.serverNoticeText {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: #3d2f29;
+}
+
+.confettiLayer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2500;
+}
+
+.confettiPiece {
+  position: absolute;
+  top: -12vh;
+  border-radius: 999px;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.18);
+  animation-name: confetti-drop;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes donut-spin {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.03);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes confetti-drop {
+  0% {
+    transform: translate3d(0, -14vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--confetti-drift, 0px), 112vh, 0) rotate(720deg);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .serverNoticeDonut,
+  .confettiPiece {
+    animation: none !important;
+  }
+}

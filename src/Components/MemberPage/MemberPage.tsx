@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './MemberPage.css';
 import api from '../../Utils/apiClient';
+import { fetchAuthStatus } from '../../Utils/authStatus';
 
 type PurchaseItem = {
     donutId: number;
@@ -21,34 +22,6 @@ type PurchaseRow = {
     items: PurchaseItem[];
 };
 
-type Coupon = {
-    id: string;
-    title: string;
-    details: string;
-    code: string;
-};
-
-const coupons: Coupon[] = [
-    {
-        id: 'glaze10',
-        title: '10% Off Your Next Box',
-        details: 'Use this on your next order of 6 donuts or more.',
-        code: 'GLAZE10'
-    },
-    {
-        id: 'coffeecombo',
-        title: 'Free Coffee Pairing',
-        details: 'Add any hot drink and pair it with one donut for free.',
-        code: 'BREWFREE'
-    },
-    {
-        id: 'sweetsunday',
-        title: 'Sunday Sweet Deal',
-        details: 'Get 2 extra classic donuts when you order a dozen.',
-        code: 'SWEETSUNDAY'
-    }
-];
-
 export default function MemberPage() {
     const [accountName, setAccountName] = useState('');
     const [points, setPoints] = useState(0);
@@ -66,19 +39,27 @@ export default function MemberPage() {
                 setIsLoading(true);
                 setErrorMessage('');
 
-                const [authRes, purchasesRes] = await Promise.all([
-                    api.get('/me'),
-                    api.get('/my-purchases')
-                ]);
+                const authRes = await fetchAuthStatus();
 
                 if (!isMounted) {
                     return;
                 }
 
-                setAccountName(authRes.data.name || 'Member');
-                setPoints(Number(authRes.data.points) || 0);
-                setPurchaseCount(Number(authRes.data.purchaseCount) || 0);
-                setTotalSpent(Number(authRes.data.totalSpent) || 0);
+                if (!authRes.authenticated) {
+                    setErrorMessage('You need to be logged in to view your member page.');
+                    return;
+                }
+
+                const purchasesRes = await api.get('/my-purchases');
+
+                if (!isMounted) {
+                    return;
+                }
+
+                setAccountName(authRes.name || 'Member');
+                setPoints(Number(authRes.points) || 0);
+                setPurchaseCount(Number(authRes.purchaseCount) || 0);
+                setTotalSpent(Number(authRes.totalSpent) || 0);
                 setPurchases(purchasesRes.data.purchases || []);
             } catch (error: any) {
                 if (!isMounted) {
@@ -109,7 +90,7 @@ export default function MemberPage() {
             <div className="MemberPage">
                 <div className="memberCard">
                     <h1>Loading your member space...</h1>
-                    <p>Pulling together your perks, coupons, and current donut picks.</p>
+                    <p>Pulling together your account snapshot and recent donut picks.</p>
                 </div>
             </div>
         );
@@ -130,12 +111,12 @@ export default function MemberPage() {
     return (
         <div className="MemberPage">
             <div className="memberShell">
-                <section className="memberHero">
+                <section className="memberOne">
                     <div>
-                        <p className="memberEyebrow">My perks</p>
-                        <h1>Hi {accountName}, here are your coupons and purchase picks.</h1>
+                        <p className="memberTitle">My perks</p>
+                        <h1>Hi {accountName}, here is your account snapshot and purchase history.</h1>
                         <p className="memberLead">
-                            This space is just for signed-in members, so you can quickly check your current deals and the donuts you have lined up.
+                            This space is just for signed-in members, so you can quickly check your rewards, total orders, and the donuts you already picked up.
                         </p>
                     </div>
                     <div className="memberTotalCard">
@@ -157,22 +138,6 @@ export default function MemberPage() {
                         <span>Latest points drop</span>
                         <strong>{latestPurchaseRows[0]?.pointsEarned ?? 0}</strong>
                     </article>
-                </section>
-
-                <section className="memberSection">
-                    <div className="memberSectionHead">
-                        <h2>My coupons</h2>
-                        <span>{coupons.length} ready to use</span>
-                    </div>
-                    <div className="couponGrid">
-                        {coupons.map((coupon) => (
-                            <article className="couponCard" key={coupon.id}>
-                                <p className="couponCode">{coupon.code}</p>
-                                <h3>{coupon.title}</h3>
-                                <p>{coupon.details}</p>
-                            </article>
-                        ))}
-                    </div>
                 </section>
 
                 <section className="memberSection">

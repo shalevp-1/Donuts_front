@@ -17,12 +17,12 @@ export let navBarArr = [
         urlStr: "/donuts"
     },
     {
-        displayStr: "Sign Up",
-        urlStr: "/signup"
+        displayStr: "Login",
+        urlStr: "/login"
     },
     {
-        displayStr: "Login",
-        urlStr: "/Login"
+        displayStr: "Sign Up",
+        urlStr: "/signup"
     },
     {
         displayStr: "My Cart",

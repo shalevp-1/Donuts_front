@@ -1,12 +1,8 @@
-//import React from 'react';
-//import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavBar from './Components/NavBar/NavBar';
 import { navBarArr } from './Components/NavBar/NavItemsData';
 import DonutsGallery from './Components/DonutsGallery/DonutsGallery';
-//import TempComponent from './Components/AboutUs/AboutUs';
 import SignUp from './Components/SignUp/SignUp';
 import AboutUs from './Components/AboutUs/AboutUs';
 import Home from './Components/Home/Home';
@@ -14,143 +10,19 @@ import DonutsV from "./Components/Donuts/DonutsV";
 import DonutsAdd from "./Components/Donuts/DonutsAdd";
 import DonutsUpdate from "./Components/Donuts/DonutsUpdate";
 import Login from './Components/SignUp/Login';
-import { ReactElement, useLayoutEffect } from 'react';
 import CartPage from './Components/CartPage/CartPage';
 import UsersPage from './Components/UsersPage/UsersPage';
 import MemberPage from './Components/MemberPage/MemberPage';
-import { useEffect, useState } from 'react';
-import api from './Utils/apiClient';
 import ThankYouPage from './Components/ThankYouPage/ThankYouPage';
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useLayoutEffect(() => {
-    window.history.scrollRestoration = 'manual';
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [pathname]);
-
-  return null;
-}
-
-function useAuthSnapshot() {
-  const [authState, setAuthState] = useState<{
-    isLoading: boolean;
-    isAuthenticated: boolean;
-    role: string;
-  }>({
-    isLoading: true,
-    isAuthenticated: false,
-    role: ''
-  });
-
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function loadAuthState() {
-      try {
-        const res = await api.get('/me');
-
-        if (!isMounted) {
-          return;
-        }
-
-        setAuthState({
-          isLoading: false,
-          isAuthenticated: true,
-          role: res.data.role || 'user'
-        });
-      } catch {
-        if (!isMounted) {
-          return;
-        }
-
-        setAuthState({
-          isLoading: false,
-          isAuthenticated: false,
-          role: ''
-        });
-      }
-    }
-
-    loadAuthState();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [pathname]);
-
-  return authState;
-}
-
-function PublicOnlyRoute({ children }: { children: ReactElement }) {
-  const { isLoading, isAuthenticated, role } = useAuthSnapshot();
-
-  if (isLoading) {
-    return null;
-  }
-
-  if (isAuthenticated) {
-    return <Navigate to={role === 'admin' ? '/donutsv' : '/my-perks'} replace />;
-  }
-
-  return children;
-}
-
-function AdminRoute({ children }: { children: ReactElement }) {
-  const { isLoading, isAuthenticated, role } = useAuthSnapshot();
-
-  if (isLoading) {
-    return null;
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  if (role !== 'admin') {
-    return <Navigate to="/my-perks" replace />;
-  }
-
-  return children;
-}
-
-function MemberRoute({ children }: { children: ReactElement }) {
-  const { isLoading, isAuthenticated } = useAuthSnapshot();
-
-  if (isLoading) {
-    return null;
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return children;
-}
-
-function ProtectedRoute({ children }: { children: ReactElement }) {
-  const { isLoading, isAuthenticated } = useAuthSnapshot();
-
-  if (isLoading) {
-    return null;
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return children;
-}
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
+import ServerStatusLayer from './Components/ServerStatus/ServerStatusLayer';
+import { AdminRoute, MemberRoute, ProtectedRoute, PublicOnlyRoute } from './Components/RouteGuards/RouteGuards';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ServerStatusLayer />
         <ScrollToTop />
         <NavBar items={navBarArr} />
         <Routes>

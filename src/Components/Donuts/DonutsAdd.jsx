@@ -50,7 +50,7 @@ const DonutsAdd = () => {
   return (
     <div className='donutAdminPage'>
       <div className='donutFormCard'>
-        <p className='adminEyebrow'>Admin</p>
+        <p className='adminTitle'>Admin</p>
         <h1>Add A New Donut</h1>
         <p className='adminLead'>Create a new donut directly in your SQL database.</p>
         {message && <div className={`adminMessage ${message.type}`}>{message.text}</div>}

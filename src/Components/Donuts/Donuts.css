@@ -2,8 +2,8 @@
     min-height: calc(100vh - 96px);
     padding: 2rem clamp(1rem, 3vw, 2.5rem) 3rem;
     background:
-        radial-gradient(circle at top left, rgba(255, 214, 170, 0.3), transparent 24%),
-        radial-gradient(circle at top right, rgba(203, 224, 255, 0.36), transparent 28%),
+        radial-gradient(circle at top left, rgb(253, 253, 253), transparent 24%),
+        radial-gradient(circle at top right, rgba(240, 238, 238, 0.932), transparent 28%),
         linear-gradient(180deg, #fffefb 0%, #f9fcff 54%, #f2f8fd 100%);
 }
 
@@ -20,7 +20,7 @@
     margin-bottom: 1.5rem;
 }
 
-.adminEyebrow {
+.adminTitle {
     margin: 0 0 0.4rem;
     color: #8a6a5c;
     font-size: 0.9rem;
@@ -134,7 +134,7 @@
     border-radius: 28px;
     border: 1px solid rgba(124, 177, 209, 0.08);
     background:
-        radial-gradient(circle at top right, rgba(255, 228, 205, 0.32), transparent 30%),
+        radial-gradient(circle at top right, rgba(238, 229, 221, 0.32), transparent 30%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 251, 255, 0.92));
     box-shadow: 0 18px 50px rgba(84, 121, 148, 0.1);
 }
@@ -159,7 +159,7 @@
 
 .donut p {
     margin: 0.75rem 0 0;
-    color: #6e625a;
+    color: #fff5ee;
     line-height: 1.55;
     min-height: 4.7rem;
 }

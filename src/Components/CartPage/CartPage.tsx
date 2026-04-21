@@ -5,6 +5,7 @@ import { fetchDonuts } from '../../Utils/donutsApi';
 import { Donut } from '../../Models/Donuts';
 import './CartPage.css';
 import api from '../../Utils/apiClient';
+import { fetchAuthStatus } from '../../Utils/authStatus';
 
 export default function CartPage() {
     const navigate = useNavigate();
@@ -125,13 +126,13 @@ export default function CartPage() {
         async function checkAuthState() {
             try {
                 setIsCheckingAuth(true);
-                const res = await api.get('/me', { withCredentials: true });
+                const res = await fetchAuthStatus();
 
                 if (!isMounted) {
                     return;
                 }
 
-                setIsAuthenticated(res.data.status === 'Success');
+                setIsAuthenticated(Boolean(res.authenticated));
             } catch {
                 if (isMounted) {
                     setIsAuthenticated(false);
@@ -152,12 +153,12 @@ export default function CartPage() {
 
     return (
         <div className="CartPage">
-            <section className="cartHero">
+            <section className="cartOne">
                 <div>
-                    <p className="cartEyebrow">Your Order</p>
+                    <p className="cartTitle">Your Order</p>
                     <h1>Review every donut before checkout.</h1>
                     <p className="cartLead">
-                        A full-page cart with clearer quantities, images, totals, and room to adjust everything comfortably.
+                        Review quantities, prices, and totals comfortably before you place the order.
                     </p>
                 </div>
                 <button type="button" className="cartBackBtn" onClick={() => navigate('/donuts')}>

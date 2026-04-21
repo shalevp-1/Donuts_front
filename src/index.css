@@ -1,12 +1,12 @@
 :root {
   color-scheme: light;
   --page-bg:
-    radial-gradient(circle at 8% 10%, rgba(255, 214, 170, 0.28), transparent 24%),
-    radial-gradient(circle at 88% 12%, rgba(155, 226, 255, 0.28), transparent 26%),
-    radial-gradient(circle at 50% 100%, rgba(177, 236, 212, 0.2), transparent 30%),
-    linear-gradient(180deg, #fffefb 0%, #fffaf2 42%, #f4fbff 100%);
+    radial-gradient(circle at 12% 14%, rgba(242, 247, 245, 0.849), transparent 24%),
+    radial-gradient(circle at 86% 10%, rgba(233, 240, 237, 0.514), transparent 22%),
+    radial-gradient(circle at 50% 100%, rgba(155, 226, 255, 0.16), transparent 30%),
+    linear-gradient(180deg, #fffdf9 0%, #fff8f1 42%, #fbfffd 100%);
   --text-main: #342722;
-  --text-soft: #746960;
+  --text-soft: #fff1e6;
   --panel-border: rgba(124, 177, 209, 0.14);
   --shop-cream: #fffefb;
   --shop-sky: #9be2ff;
@@ -27,7 +27,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-family: "Helvetica Neue", "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--page-bg);
@@ -40,12 +40,12 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.24;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.46) 0 1px, transparent 1px),
-    linear-gradient(135deg, transparent 0 46%, rgba(155, 226, 255, 0.09) 46% 54%, transparent 54% 100%);
-  background-size: 36px 36px, 150px 150px;
-  background-position: 0 0, 16px 8px;
+  opacity: 0.18;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.42) 0 1px, transparent 1px),
+    linear-gradient(135deg, transparent 0 46%, rgba(255, 214, 170, 0.09) 46% 54%, transparent 54% 100%);
+  background-size: 38px 38px, 160px 160px;
+  background-position: 0 0, 18px 10px;
 }
 
 a,
@@ -64,6 +64,6 @@ code {
 }
 
 ::selection {
-  background: rgba(155, 226, 255, 0.38);
-  color: #2b1e18;
+  background: rgba(0, 122, 255, 0.22);
+  color: #1d1d1d;
 }

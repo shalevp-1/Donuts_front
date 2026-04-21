@@ -62,7 +62,7 @@ const DonutsV = () => {
           <div className="adminShell">
             <section className="adminTopbar">
               <div>
-                <p className="adminEyebrow">Dashboard</p>
+                <p className="adminTitle">Dashboard</p>
                 <h1>Hello {name}!</h1>
                 <p className="adminLead">Add Donuts or update them as you wish. You are logged in with the role of
                    <strong>{role}</strong>.</p>

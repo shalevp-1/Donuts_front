@@ -1,33 +1,60 @@
 .CartPage {
+    position: relative;
     min-height: 100vh;
     padding: 2rem clamp(1rem, 3vw, 2.5rem) 3rem;
     background:
-        radial-gradient(circle at top left, rgba(255, 228, 208, 0.7), transparent 22%),
-        radial-gradient(circle at top right, rgba(210, 228, 255, 0.6), transparent 28%),
-        linear-gradient(180deg, #f6f1eb 0%, #eef2f8 52%, #e5edf8 100%);
+        radial-gradient(circle at top left, rgba(205, 233, 255, 0.72), transparent 24%),
+        radial-gradient(circle at top right, rgba(224, 242, 255, 0.7), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, #f4faff 100%);
+    overflow: hidden;
 }
 
-.cartHero {
+.CartPage::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.5) 0 1px, transparent 1px),
+        linear-gradient(135deg, transparent 0 46%, rgba(124, 177, 209, 0.08) 46% 54%, transparent 54% 100%);
+    background-size: 42px 42px, 180px 180px;
+    background-position: 0 0, 20px 12px;
+}
+
+.cartOne {
     max-width: 1400px;
     margin: 0 auto 1.5rem;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 1rem;
+    padding: clamp(1.3rem, 3vw, 2rem);
+    border-radius: 38px;
+    border: 1px solid rgba(124, 177, 209, 0.14);
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.9) 34%, rgba(241, 248, 255, 0.22) 64%, rgba(241, 248, 255, 0.08) 100%),
+        linear-gradient(180deg, rgba(245, 251, 255, 0.18), rgba(245, 251, 255, 0.06));
+    box-shadow: 0 34px 84px rgba(84, 121, 148, 0.16);
+    backdrop-filter: blur(14px);
 }
 
-.cartEyebrow {
+.cartOne > div {
+    max-width: 52rem;
+}
+
+.cartTitle {
     margin: 0 0 0.4rem;
-    color: #8b6f60;
-    font-size: 0.92rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    color: #6891ab;
+    font-size: 0.86rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
-.cartHero h1 {
+.cartOne h1 {
     margin: 0;
-    color: #1f1a16;
+    color: #203040;
     font-size: clamp(2.2rem, 4vw, 4.2rem);
     line-height: 0.98;
     letter-spacing: -0.04em;
@@ -37,7 +64,7 @@
 .cartLead {
     max-width: 42rem;
     margin: 1rem 0 0;
-    color: #665851;
+    color: #5e7787;
     line-height: 1.7;
 }
 
@@ -46,11 +73,19 @@
     border: 0;
     border-radius: 999px;
     padding: 0.9rem 1.2rem;
-    background: rgba(125, 79, 61, 0.12);
-    color: #6f4b3b;
+    background: rgba(124, 177, 209, 0.12);
+    color: #4f6f86;
     cursor: pointer;
     font-weight: 700;
     white-space: nowrap;
+    box-shadow: 0 16px 34px rgba(84, 121, 148, 0.08);
+    transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.cartBackBtn:hover,
+.cartBrowseBtn:hover {
+    transform: translateY(-2px);
+    background: rgba(124, 177, 209, 0.18);
 }
 
 .cartLayout {
@@ -65,10 +100,11 @@
 .cartItemsPanel,
 .summaryCard,
 .cartEmptyState {
-    border: 1px solid rgba(139, 103, 83, 0.1);
+    border: 1px solid rgba(124, 177, 209, 0.14);
     border-radius: 32px;
-    background: rgba(255, 250, 245, 0.86);
-    box-shadow: 0 18px 48px rgba(90, 63, 45, 0.08);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 24px 60px rgba(84, 121, 148, 0.09);
+    backdrop-filter: blur(12px);
 }
 
 .cartItemsPanel {
@@ -79,18 +115,28 @@
 
 .checkoutRow {
     display: grid;
-    grid-template-columns: 110px minmax(0, 1fr);
+    grid-template-columns: 120px minmax(0, 1fr);
     gap: 1rem;
     padding: 1rem;
-    border-radius: 26px;
-    background: linear-gradient(180deg, rgba(255, 251, 247, 0.95), rgba(245, 238, 229, 0.76));
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(245, 251, 255, 0.84));
+    border: 1px solid rgba(124, 177, 209, 0.12);
+    box-shadow: 0 18px 42px rgba(84, 121, 148, 0.08);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.checkoutRow:hover {
+    transform: translateY(-2px);
+    border-color: rgba(124, 177, 209, 0.18);
+    box-shadow: 0 26px 52px rgba(84, 121, 148, 0.12);
 }
 
 .checkoutThumb {
-    width: 110px;
-    height: 110px;
-    border-radius: 22px;
+    width: 120px;
+    height: 120px;
+    border-radius: 24px;
     object-fit: cover;
+    box-shadow: 0 14px 30px rgba(84, 121, 148, 0.12);
 }
 
 .checkoutInfo {
@@ -108,18 +154,19 @@
 
 .checkoutTitleRow h2 {
     margin: 0;
-    color: #251d18;
+    color: #243342;
     font-size: 1.25rem;
+    line-height: 1.15;
 }
 
 .checkoutTitleRow p {
     margin: 0.45rem 0 0;
-    color: #6d5c53;
-    line-height: 1.55;
+    color: #678092;
+    line-height: 1.6;
 }
 
 .checkoutTitleRow strong {
-    color: #2f241e;
+    color: #2f6d92;
     font-size: 1.15rem;
     white-space: nowrap;
 }
@@ -127,8 +174,9 @@
 .checkoutMetaRow {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
-    color: #7b6b61;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    color: #678092;
     font-weight: 600;
 }
 
@@ -145,7 +193,8 @@
     gap: 0.55rem;
     padding: 0.35rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(244, 250, 255, 0.95);
+    border: 1px solid rgba(124, 177, 209, 0.12);
 }
 
 .checkoutQty button {
@@ -153,28 +202,41 @@
     height: 38px;
     border: 0;
     border-radius: 999px;
-    background: rgba(125, 79, 61, 0.1);
-    color: #714d3d;
+    background: linear-gradient(135deg, #8edbff, #76b9e7);
+    color: #f8fdff;
     cursor: pointer;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 800;
+    box-shadow: 0 12px 22px rgba(84, 121, 148, 0.16);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.checkoutQty button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 26px rgba(84, 121, 148, 0.2);
 }
 
 .checkoutQty span {
     min-width: 2ch;
     text-align: center;
-    color: #2f241e;
+    color: #233444;
     font-weight: 700;
 }
 
 .checkoutRemoveBtn {
-    border: 0;
+    border: 1px solid rgba(124, 177, 209, 0.14);
     border-radius: 999px;
     padding: 0.8rem 1rem;
-    background: rgba(125, 79, 61, 0.11);
-    color: #744f3f;
+    background: rgba(124, 177, 209, 0.12);
+    color: #557487;
     cursor: pointer;
     font-weight: 700;
+    transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.checkoutRemoveBtn:hover {
+    transform: translateY(-1px);
+    background: rgba(124, 177, 209, 0.18);
 }
 
 .cartSummaryPanel {
@@ -188,11 +250,11 @@
 
 .summaryLabel {
     margin: 0 0 1rem;
-    color: #8b6f60;
-    font-weight: 700;
+    color: #6891ab;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
 }
 
 .summaryRow,
@@ -205,14 +267,15 @@
 }
 
 .summaryRow {
-    padding: 0.8rem 0;
-    border-bottom: 1px solid rgba(146, 112, 94, 0.12);
+    padding: 0.82rem 0;
+    border-bottom: 1px solid rgba(124, 177, 209, 0.12);
 }
 
 .summaryTotal {
     margin-top: 0.9rem;
     padding-top: 0.6rem;
     font-size: 1.2rem;
+    color: #203040;
 }
 
 .summaryCheckoutBtn,
@@ -223,6 +286,12 @@
     padding: 0.95rem 1rem;
     cursor: pointer;
     font-weight: 700;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.summaryCheckoutBtn:hover:not(:disabled),
+.summaryClearBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
 }
 
 .summaryCheckoutBtn:disabled,
@@ -233,20 +302,26 @@
 
 .summaryCheckoutBtn {
     margin-top: 1rem;
-    background: #7d4f3d;
-    color: #fff8f2;
+    background: linear-gradient(135deg, #8edbff, #76b9e7);
+    color: #f8fdff;
+    box-shadow: 0 16px 34px rgba(84, 121, 148, 0.16);
 }
 
 .summaryMessage {
     margin: 1rem 0 0;
-    color: #7b4d3c;
+    padding: 0.95rem 1rem;
+    border-radius: 18px;
+    background: rgba(255, 242, 236, 0.9);
+    border: 1px solid rgba(219, 164, 136, 0.18);
+    color: #84503f;
     line-height: 1.5;
 }
 
 .summaryClearBtn {
     margin-top: 0.7rem;
-    background: rgba(125, 79, 61, 0.12);
-    color: #714d3d;
+    background: rgba(124, 177, 209, 0.12);
+    color: #557487;
+    border: 1px solid rgba(124, 177, 209, 0.14);
 }
 
 .cartEmptyState {
@@ -256,14 +331,15 @@
 
 .cartEmptyState h2 {
     margin: 0;
-    color: #251d18;
+    color: #203040;
+    font-size: 1.8rem;
 }
 
 .cartEmptyState p {
     margin: 0.75rem auto 0;
     max-width: 28rem;
-    color: #6d5c53;
-    line-height: 1.6;
+    color: #678092;
+    line-height: 1.7;
 }
 
 .cartEmptyState .cartBrowseBtn {
@@ -281,9 +357,13 @@
 }
 
 @media (max-width: 700px) {
-    .cartHero {
+    .cartOne {
         flex-direction: column;
-        align-items: stretch;
+        align-items: flex-start;
+    }
+
+    .cartOne h1 {
+        max-width: none;
     }
 
     .checkoutRow {
@@ -299,5 +379,19 @@
     .checkoutActions {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .checkoutTitleRow strong {
+        align-self: flex-start;
+    }
+
+    .checkoutQty,
+    .checkoutRemoveBtn,
+    .summaryCheckoutBtn,
+    .summaryClearBtn,
+    .cartBackBtn,
+    .cartBrowseBtn {
+        width: 100%;
+        justify-content: center;
     }
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './UsersPage.css';
 import api from '../../Utils/apiClient';
+import { fetchAuthStatus } from '../../Utils/authStatus';
 
 type UserRow = {
     id: number;
@@ -38,15 +39,25 @@ export default function UsersPage() {
                 setIsLoading(true);
                 setErrorMessage('');
 
-                const authRes = await api.get('/me');
+                const authRes = await fetchAuthStatus();
+
+                if (!isMounted) {
+                    return;
+                }
+
+                if (!authRes.authenticated) {
+                    setErrorMessage('You need to be logged in to view users.');
+                    return;
+                }
+
                 const usersRes = await api.get('/users');
 
                 if (!isMounted) {
                     return;
                 }
 
-                setAccountName(authRes.data.name || 'Connected');
-                setAccountRole(authRes.data.role || 'user');
+                setAccountName(authRes.name || 'Connected');
+                setAccountRole(authRes.role || 'user');
                 setUsers(usersRes.data.users || []);
             } catch (error: any) {
                 if (!isMounted) {
@@ -166,7 +177,7 @@ export default function UsersPage() {
                         className="usersConfirmDialog"
                         onClick={(event) => event.stopPropagation()}
                     >
-                        <p className="usersConfirmEyebrow">Confirm role change</p>
+                        <p className="usersConfirmTitle">Confirm role change</p>
                         <h2>
                             {pendingRoleChange.nextRole === 'admin'
                                 ? `Make ${pendingRoleChange.username} an admin?`
@@ -197,15 +208,15 @@ export default function UsersPage() {
                 </div>
             )}
             <div className="usersShell">
-                <section className="usersHero">
+                <section className="usersOne">
                     <div>
-                        <p className="usersEyebrow">Members</p>
+                        <p className="usersTitle">Members</p>
                         <h1>All signed-up users in one place.</h1>
                         <p className="usersLead">
                             Logged in as <strong>{accountName}</strong> with the role of <strong>{accountRole}</strong>. ALl of the users that have signed up
                         </p>
                     </div>
-                    <div className="usersHeroStat">
+                    <div className="usersOneStat">
                         <span>Total users</span>
                         <strong>{users.length}</strong>
                     </div>

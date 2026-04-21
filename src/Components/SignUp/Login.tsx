@@ -1,85 +1,64 @@
-import React, { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import './SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../../Utils/apiClient';
+import { fetchAuthStatus } from '../../Utils/authStatus';
+import type { AuthMessage } from './authTypes';
+
+type LoginFormData = {
+    username: string;
+    password: string;
+};
+
+const EMPTY_FORM: LoginFormData = {
+    username: '',
+    password: ''
+};
+const LOGIN_REDIRECT_DELAY_MS = 700;
 
 export default function Login() {
-    const [formData, setFormData] = useState({
-        username: '',
-        password: ''     
-    });
-    const [authMessage, setAuthMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
+    const [formData, setFormData] = useState<LoginFormData>(EMPTY_FORM);
+    const [authMessage, setAuthMessage] = useState<AuthMessage | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [loggedInRole, setLoggedInRole] = useState('');
-   
+
     const navigate = useNavigate();
 
-    React.useEffect(() => {
-        let isMounted = true;
-
-        async function checkLoggedInState() {
-            try {
-                const res = await api.get('/me');
-
-                if (!isMounted || res.data.status !== 'Success') {
-                    return;
-                }
-
-                setLoggedInRole(res.data.role || 'user');
-                setAuthMessage({
-                    type: 'success',
-                    text: 'You are already signed in. Use the account menu if you want to log out.'
-                });
-            } catch {
-                if (isMounted) {
-                    setLoggedInRole('');
-                }
-            }
-        }
-
-        checkLoggedInState();
-
-        return () => {
-            isMounted = false;
-        };
-    }, []);
-
-    
-    const handleSubmit = async (event: { preventDefault: () => void; }) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setAuthMessage(null);
 
-        if (loggedInRole) {
-            navigate(loggedInRole === 'admin' ? '/donutsv' : '/my-perks');
-            return;
-        }
+        const username = formData.username.trim();
 
-        if (!formData.username || !formData.password) {
+        if (!username || !formData.password) {
             setAuthMessage({ type: 'error', text: 'Please enter both username and password.' });
             return;
         }
 
         try {
             setIsSubmitting(true);
-            const res = await api.post('/login', formData);
-            if(res.data.status === "Logged in successfully") {
+            const credentials = {
+                username,
+                password: formData.password
+            };
+
+            const res = await api.post('/login', credentials);
+
+            if (res.data.status === 'Logged in successfully') {
                 setAuthMessage({ type: 'success', text: 'Welcome back. Redirecting you now.' });
                 let nextRoute = '/my-perks';
 
                 try {
-                    const meRes = await api.get('/me');
-                    nextRoute = meRes.data.role === 'admin' ? '/donutsv' : '/my-perks';
+                    const authStatus = await fetchAuthStatus();
+                    nextRoute = authStatus.role === 'admin' ? '/donutsv' : '/my-perks';
                 } catch {
-                    // If the backend was not restarted yet and /me is missing,
-                    // still let the user move forward after a successful login.
                     nextRoute = '/';
                 }
 
-                window.setTimeout(() => navigate(nextRoute), 700);
+                window.setTimeout(() => navigate(nextRoute), LOGIN_REDIRECT_DELAY_MS);
+                return;
             }
-            else {
-                setAuthMessage({ type: 'error', text: res.data.error || 'We could not sign you in right now.' });
-            }
+
+            setAuthMessage({ type: 'error', text: res.data.error || 'We could not sign you in right now.' });
         } catch (error: any) {
             setAuthMessage({
                 type: 'error',
@@ -90,30 +69,39 @@ export default function Login() {
         }
     };
 
-    // const handleLogin= () => {
-       
-    //     window.alert('You\'ve Logged In!');
-    // };
-
     return (
         <div className='Login'>
             <div className="authShell">
-                <div className="authIntro">
-                    <h1>Welcome!</h1>
-                    <p>Sign in to manage your bakery space and keep things moving!</p>
-                </div>
-                <div className="form authCard">
-                <form onSubmit={handleSubmit}>
-                {authMessage && (
-                    <div className={`authMessage ${authMessage.type}`}>
-                        {authMessage.text}
+                <div className="authStage">
+                    <div className="form authCard">
+                        <form onSubmit={handleSubmit}>
+                            {authMessage && (
+                                <div className={`authMessage ${authMessage.type}`}>
+                                    {authMessage.text}
+                                </div>
+                            )}
+                            <input
+                                type="text"
+                                id='username'
+                                placeholder='UserName'
+                                autoComplete='username'
+                                autoCapitalize='none'
+                                spellCheck={false}
+                                value={formData.username}
+                                onChange={(e) => setFormData((prev) => ({ ...prev, username: e.target.value }))}
+                            />
+                            <input
+                                type="password"
+                                id='password'
+                                placeholder='Password'
+                                autoComplete='current-password'
+                                value={formData.password}
+                                onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
+                            />
+                            <input type="submit" value={isSubmitting ? 'Signing in...' : 'Login'} disabled={isSubmitting} />
+                        </form>
+                        <Link to="/signup" className="authSwitch">Sign Up</Link>
                     </div>
-                )}
-                <input type="text" id='username' placeholder='UserName' onChange={(e) => setFormData({ ...formData, username: e.target.value })}/>
-                <input type="password" id='password' placeholder='Password' value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })} />
-                <input type="submit" value={isSubmitting ? "Signing in..." : "Login"} disabled={isSubmitting}/>
-                </form>
-                <Link to="/signup" className="authSwitch">Sign Up</Link>
                 </div>
             </div>
         </div>
