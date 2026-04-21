@@ -376,28 +376,25 @@
     }
 
     .usersActionGroup {
+        width: 100%;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: stretch;
+        justify-content: stretch;
         border-bottom: 0;
     }
 
     .usersRoleToggleBtn,
     .usersDeleteBtn {
-        flex: 1 1 180px;
+        flex: 1 1 160px;
         justify-content: center;
+        min-width: 0;
         width: auto;
     }
 
     .usersTableHead,
     .usersDeleteBtn {
         grid-column: auto;
-    }
-
-    .usersActionGroup,
-    .usersRoleBadge,
-    .usersDeleteBtn {
-        width: fit-content;
     }
 
     .usersConfirmActions {
@@ -444,6 +441,12 @@
         grid-column: 1 / -1;
     }
 
+    .usersActionGroup {
+        width: 100%;
+        gap: 0.65rem;
+        align-items: stretch;
+    }
+
     .usersRoleToggleBtn,
     .usersDeleteBtn,
     .usersConfirmPrimary,
@@ -453,6 +456,11 @@
 
     .usersActionGroup {
         flex-direction: column;
+    }
+
+    .usersRoleToggleBtn,
+    .usersDeleteBtn {
+        min-height: 48px;
     }
 
     .usersActionMessage {

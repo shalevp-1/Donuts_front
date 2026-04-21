@@ -153,23 +153,23 @@
 }
 
 .specialsGrid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 4.25rem 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
 }
 
 .specialCard {
     position: relative;
+    flex: 1 1 320px;
+    max-width: 520px;
+    width: 100%;
     display: grid;
     gap: 1rem;
     justify-items: center;
     color: inherit;
     padding: 0.75rem 0;
     isolation: isolate;
-}
-
-.specialCard:hover {
-    z-index: 21;
 }
 
 .specialImageLink {
@@ -187,12 +187,6 @@
     transform-origin: center center;
 }
 
-.specialCard:hover .specialImage {
-    transform: scale(1.4);
-    border-radius: 100px;
-    box-shadow: 0 40px 94px rgba(84, 121, 148, 0.3);
-}
-
 .specialCopy {
     width: min(100%, 340px);
     padding: 1.05rem 1.1rem 1.15rem;
@@ -204,13 +198,6 @@
     transition: transform 460ms ease, box-shadow 460ms ease;
     transform-origin: center center;
 }
-
-.specialCard:hover .specialCopy {
-
-    transform: scale(1.2);
-    box-shadow: 0 28px 56px rgba(84, 121, 148, 0.18);
-}
-
 
 .specialCopy {
     margin-top: 35px;
@@ -277,8 +264,14 @@
     }
 
     .specialsGrid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .specialCard {
+        max-width: 720px;
+        width: 100%;
     }
 
     .homePromo {
@@ -304,5 +297,38 @@
         background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(242, 249, 255, 0.84)),
             url('https://as2.ftcdn.net/v2/jpg/01/76/75/93/1000_F_176759374_kcm45VGAkoqILGSAwE8mhTbn3IuaoB8P.jpg') center / cover no-repeat;
+    }
+
+    .specialCard {
+        width: 100%;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .specialCard:hover {
+        z-index: 21;
+    }
+
+    .specialCard:hover .specialImage {
+        transform: scale(1.1);
+        border-radius: 100px;
+        box-shadow: 0 34px 78px rgba(84, 121, 148, 0.26);
+    }
+
+    .specialCard:hover .specialCopy {
+        transform: scale(1.05);
+        box-shadow: 0 24px 46px rgba(84, 121, 148, 0.16);
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .specialCard:hover .specialImage,
+    .specialCard:hover .specialCopy {
+        transform: none;
+        box-shadow: inherit;
+    }
+
+    .specialCard:hover {
+        z-index: auto;
     }
 }
