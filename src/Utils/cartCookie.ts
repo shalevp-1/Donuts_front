@@ -37,7 +37,7 @@ export function saveCartCookie(cartItems: CartItems) {
     }
 
     const cookieValue = encodeURIComponent(JSON.stringify(cartItems));
-    document.cookie = `${CART_COOKIE_NAME}=${cookieValue}; path=/; max-age=${60 * 60 * 24 * 14}; SameSite=Lax`;
+    document.cookie = `${CART_COOKIE_NAME}=${cookieValue}; path=/; max-age=${60 * 60}; SameSite=Lax`;
 }
 
 export function clearCartCookie() {
