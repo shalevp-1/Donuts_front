@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import './DountsGallery.css'
-import { Donut } from '../../Models/Donuts';
+import './DonutsGallery.css'
+import type { Donut } from '../../Models/Donuts';
 import Card from '../Card/Card';
 import DetailedView from '../DetailedView/DetailedView';
 import { readCartCookie, saveCartCookie } from '../../Utils/cartCookie';
@@ -41,7 +41,7 @@ export default function DonutsGallery() {
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [loadError, setLoadError] = useState('');
-    const [theColor] = useState("white");
+    const theColor = "white";
     const loadMoreRef = useRef<HTMLDivElement | null>(null);
     const navigate = useNavigate();
 
@@ -145,12 +145,12 @@ export default function DonutsGallery() {
 
                     return loadedDonuts[0] ?? null;
                 });
-            } catch (error) {
+            } catch (error: unknown) {
                 if (!isMounted) {
                     return;
                 }
 
-                setLoadError('Could not load donuts from the database right now.');
+                setLoadError(error instanceof Error ? error.message : 'Could not load donuts from the database right now.');
             } finally {
                 if (isMounted) {
                     setIsLoading(false);
