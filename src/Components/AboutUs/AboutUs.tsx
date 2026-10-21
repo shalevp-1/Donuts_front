@@ -5,7 +5,6 @@ export default function AboutUs() {
     <div className="aboutPage">
       <section className="aboutOne">
         <div className="aboutIntro">
-          <p className="aboutOneTitle">About Shalev's Bakery</p>
           <h1>Dounts! Dounts everywhere!</h1>
           <p className="aboutLead">
             Shalev&apos;s Bakery is built around simple ingredients, careful craft,
