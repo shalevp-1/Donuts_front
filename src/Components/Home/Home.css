@@ -17,35 +17,46 @@
     background-size: cover;
 }
 
+
 .homeOne {
+    display: flex;
     align-items: center;
     min-height: calc(100vh - 11rem);
 }
 
 .homeOneCard {
     width: 100%;
+    min-height: 460px;
     margin: 0 auto;
     padding: clamp(1.8rem, 3vw, 2.4rem);
-    display: block;
+    display: flex;
+    align-items: center;
     border-radius: 44px;
     background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.9) 36%, rgba(242, 249, 255, 0.2) 64%, rgba(242, 249, 255, 0.08) 100%),
-        linear-gradient(180deg, rgba(245, 251, 255, 0.18), rgba(245, 251, 255, 0.06)),
-        url('https://as2.ftcdn.net/v2/jpg/01/76/75/93/1000_F_176759374_kcm45VGAkoqILGSAwE8mhTbn3IuaoB8P.jpg') center right / cover no-repeat;
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.96) 0%,
+            rgba(255, 255, 255, 0.9) 36%,
+            rgba(242, 249, 255, 0.2) 64%,
+            rgba(242, 249, 255, 0.08) 100%),
+        linear-gradient(180deg,
+            rgba(245, 251, 255, 0.18),
+            rgba(245, 251, 255, 0.06)),
+        url('https://as2.ftcdn.net/v2/jpg/01/76/75/93/1000_F_176759374_kcm45VGAkoqILGSAwE8mhTbn3IuaoB8P.jpg')
+        center right / cover no-repeat;
     border: 1px solid rgba(124, 177, 209, 0.12);
     box-shadow: 0 34px 84px rgba(84, 121, 148, 0.16);
-    backdrop-filter: blur(14px);
 }
 
 .homeOneCopy {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 460px;
-    max-width: min(52rem, 62%);
-    padding: clamp(1rem, 2vw, 1.4rem) clamp(0.5rem, 1vw, 0.9rem);
+    width: 62%;
+    min-height: 420px;
+    padding: 1rem;
     text-align: left;
 }
+
 
 .homeOneTitle {
     margin: 0 0 0.9rem;
@@ -242,72 +253,210 @@
     transform: translateY(0);
 }
 
-@media (max-width: 1120px) {
-    .specialsGrid {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-    }
 
-    .specialCard {
-        max-width: 720px;
-        width: 100%;
-    }
 
-    .homePromo {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-}
-
-@media (max-width: 980px) {
-    .homeOneCopy {
-        text-align: center;
-        align-items: center;
-        min-height: 400px;
-        max-width: none;
-    }
-
-    .homeOneCopy h1 {
-        max-width: none;
-    }
-
-    .homeLead {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .homeActions {
-        justify-content: center;
-    }
-
-}
 
 @media (max-width: 768px) {
     .homePage {
-        padding-top: 1rem;
+        padding: 1rem 0.85rem 3rem;
     }
 
     .homeOne {
-        min-height: calc(100vh - 8rem);
-    }
-
-    .homeOneCopy h1 {
-        max-width: none;
+        min-height: auto;
+        margin-bottom: 2rem;
     }
 
     .homeOneCard {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: auto;
+        padding: 1.5rem 1rem;
+        border-radius: 26px;
         background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(242, 249, 255, 0.84)),
-            url('https://as2.ftcdn.net/v2/jpg/01/76/75/93/1000_F_176759374_kcm45VGAkoqILGSAwE8mhTbn3IuaoB8P.jpg') center / cover no-repeat;
+            linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.95),
+                rgba(242, 249, 255, 0.88)
+            ),
+            url('https://as2.ftcdn.net/v2/jpg/01/76/75/93/1000_F_176759374_kcm45VGAkoqILGSAwE8mhTbn3IuaoB8P.jpg')
+            center / cover no-repeat;
+    }
+
+    .homeOneCopy {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 0;
+        padding: 0.5rem 0.25rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .homeOneTitle {
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+    }
+
+    .homeOneCopy h1 {
+        max-width: 100%;
+        font-size: clamp(2.25rem, 8vw, 3.5rem);
+        line-height: 1;
+        letter-spacing: -0.04em;
+        overflow-wrap: normal;
+    }
+
+    .homeLead {
+        max-width: 34rem;
+        margin-top: 1rem;
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .homeActions {
+        width: 100%;
+        justify-content: center;
+        gap: 0.65rem;
+        margin-top: 1.4rem;
+    }
+
+    .primaryHomeAction,
+    .secondaryHomeAction {
+        min-height: 46px;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .specialsSection {
+        margin-top: 1.5rem;
+    }
+
+    .sectionHeading {
+        margin-bottom: 1rem;
+        padding: 0 0.25rem;
+    }
+
+    .sectionHeading h2,
+    .homePromo h2 {
+        font-size: clamp(1.8rem, 7vw, 2.6rem);
+        line-height: 1.1;
+    }
+
+    .sectionHeading p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .specialsGrid {
+        gap: 1.25rem;
     }
 
     .specialCard {
+        box-sizing: border-box;
         width: 100%;
+        max-width: 420px;
+        gap: 0.75rem;
+        padding: 0.25rem 0;
+    }
+
+    .specialImageLink {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .specialImage {
+        display: block;
+        width: min(100%, 290px);
+    }
+
+    .specialCopy {
+        box-sizing: border-box;
+        width: min(100%, 340px);
+        margin-top: 0;
+        padding: 1rem;
+        border-radius: 20px;
+    }
+
+    .specialCopy h3 {
+        font-size: 1.4rem;
+    }
+
+    .specialCopy p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .homePromo {
+        box-sizing: border-box;
+        width: 100%;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding: 1.4rem 1rem;
+        border-radius: 22px;
+    }
+
+    .homePromo p {
+        line-height: 1.6;
+    }
+
+    .promoLink {
+        max-width: 100%;
+        min-height: 46px;
+        padding: 0.75rem 1.1rem;
+        text-align: center;
     }
 }
 
+@media (max-width: 400px) {
+    .homePage {
+        padding-right: 0.65rem;
+        padding-left: 0.65rem;
+    }
+
+    .homeOneCard {
+        padding: 1.25rem 0.75rem;
+        border-radius: 22px;
+    }
+
+    .homeOneCopy h1 {
+        font-size: clamp(2rem, 9vw, 2.5rem);
+    }
+
+    .homeActions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .primaryHomeAction,
+    .secondaryHomeAction {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .specialImage {
+        width: min(100%, 260px);
+    }
+
+    .specialCopy {
+        padding: 0.9rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .revealOnScroll {
+        transition: none;
+    }
+
+    .primaryHomeAction,
+    .secondaryHomeAction,
+    .promoLink,
+    .specialImage,
+    .specialCopy {
+        transition: none;
+    }
+}
+
+
+/* Restore the original desktop hover highlight */
 @media (hover: hover) and (pointer: fine) {
     .specialCard:hover {
         z-index: 21;
@@ -325,11 +474,11 @@
     }
 }
 
+/* Keep hover effects disabled on touch-only devices */
 @media (hover: none) and (pointer: coarse) {
     .specialCard:hover .specialImage,
     .specialCard:hover .specialCopy {
         transform: none;
-        box-shadow: inherit;
     }
 
     .specialCard:hover {
