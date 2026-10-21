@@ -112,7 +112,7 @@ const DonutsUpdate = () => {
         {message && <div className={`adminMessage ${message.type}`} role="alert">{message.text}</div>}
         {isLoading ? <p>Loading donut...</p> : hasLoadedDonut ? <>
           <input required type="text" placeholder="Name" value={donut.name} onChange={handleChange} name="name" />
-          <input required type="number" min="0" step="0.01" placeholder="Price" value={donut.price} onChange={handleChange} name="price" />
+          <input required type="number" min="0" step="0.01" placeholder="Price (₪)" value={donut.price} onChange={handleChange} name="price" />
           <textarea required placeholder="Description" value={donut.description} onChange={handleChange} name="description" />
           <input required type="text" placeholder="Ingredients (comma separated)" value={donut.ingredients} onChange={handleChange} name="ingredients" />
           <input required type="number" min="0" step="1" placeholder="Calories" value={donut.calories} onChange={handleChange} name="calories" />

@@ -5,6 +5,7 @@ import "./Donuts.css";
 import api from "../../Utils/apiClient";
 import type { Donut } from "../../Models/Donuts";
 import { normalizeDonut } from "../../Utils/donutsApi";
+import { formatShekel } from "../../Utils/formatShekel";
 
 type AdminResponse = { status?: string; name?: string; role?: string; error?: string };
 function getErrorMessage(error: unknown, fallback: string): string {
@@ -98,13 +99,13 @@ const DonutsV = () => {
         {actionError && <div className="adminMessage error" role="alert">{actionError}</div>}
         <section className="adminStatsRow">
           <div className="adminStatCard"><span>Total donuts</span><strong>{donuts.length}</strong></div>
-          <div className="adminStatCard"><span>Average price</span><strong>${donuts.length ? (donuts.reduce((sum, donut) => sum + (Number.isFinite(donut.price) ? donut.price : 0), 0) / donuts.length).toFixed(2) : "0.00"}</strong></div>
+          <div className="adminStatCard"><span>Average price</span><strong>{formatShekel(donuts.length ? donuts.reduce((sum, donut) => sum + (Number.isFinite(donut.price) ? donut.price : 0), 0) / donuts.length : 0)}</strong></div>
         </section>
         {isLoadingDonuts ? <p>Loading donuts...</p> : <div className="donuts adminDonutsGrid">
           {donuts.map((donut) => <div className="donut" key={donut.id}>
             {donut.image && <img src={donut.image} alt={donut.name} />}
             <h2>{donut.name}</h2><p>{donut.description}</p>
-            <div className="adminDonutMeta"><span>${Number.isFinite(donut.price) ? donut.price.toFixed(2) : "0.00"}</span><span>{donut.calories} cal</span></div>
+            <div className="adminDonutMeta"><span>{formatShekel(Number.isFinite(donut.price) ? donut.price : 0)}</span><span>{donut.calories} cal</span></div>
             <div className="adminDonutActions">
               <button className="delete" onClick={() => handleDelete(donut.id)}>Delete</button>
               <Link className="update" to={`/donutsupdate/${donut.id}`}>Update</Link>

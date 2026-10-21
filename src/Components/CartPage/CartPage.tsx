@@ -6,6 +6,7 @@ import { Donut } from '../../Models/Donuts';
 import './CartPage.css';
 import api from '../../Utils/apiClient';
 import { fetchAuthStatus } from '../../Utils/authStatus';
+import { formatShekel } from '../../Utils/formatShekel';
 
 export default function CartPage() {
     const navigate = useNavigate();
@@ -196,10 +197,10 @@ export default function CartPage() {
                                             <h2>{donut.name}</h2>
                                             <p>{donut.description}</p>
                                         </div>
-                                        <strong>${(donut.price * (cartItems[donut.id] ?? 0)).toFixed(2)}</strong>
+                                        <strong>{formatShekel(donut.price * (cartItems[donut.id] ?? 0))}</strong>
                                     </div>
                                     <div className="checkoutMetaRow">
-                                        <span>${donut.price.toFixed(2)} each</span>
+                                        <span>{formatShekel(donut.price)} each</span>
                                         <span>{donut.calories} cal</span>
                                     </div>
                                     <div className="checkoutActions">
@@ -227,15 +228,15 @@ export default function CartPage() {
                         </div>
                         <div className="summaryRow">
                             <span>Subtotal</span>
-                            <strong>${subtotal.toFixed(2)}</strong>
+                            <strong>{formatShekel(subtotal)}</strong>
                         </div>
                         <div className="summaryRow">
                             <span>Service fee</span>
-                            <strong>${serviceFee.toFixed(2)}</strong>
+                            <strong>{formatShekel(serviceFee)}</strong>
                         </div>
                         <div className="summaryTotal">
                             <span>Total</span>
-                            <strong>${total.toFixed(2)}</strong>
+                            <strong>{formatShekel(total)}</strong>
                         </div>
                         {checkoutMessage && <p className="summaryMessage">{checkoutMessage}</p>}
                         <button

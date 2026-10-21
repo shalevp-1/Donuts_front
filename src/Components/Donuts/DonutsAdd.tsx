@@ -75,7 +75,7 @@ const DonutsAdd = () => {
         <p className="adminLead">Create a new donut directly in your SQL database.</p>
         {message && <div className={`adminMessage ${message.type}`} role="alert">{message.text}</div>}
         <input required type="text" placeholder="Name" onChange={handleChange} name="name" value={donut.name} />
-        <input required type="number" min="0" step="0.01" placeholder="Price" onChange={handleChange} name="price" value={donut.price} />
+        <input required type="number" min="0" step="0.01" placeholder="Price (₪)" onChange={handleChange} name="price" value={donut.price} />
         <textarea required placeholder="Description" onChange={handleChange} name="description" value={donut.description} />
         <input required type="text" placeholder="Ingredients (comma separated)" onChange={handleChange} name="ingredients" value={donut.ingredients} />
         <input required type="number" min="0" step="1" placeholder="Calories" onChange={handleChange} name="calories" value={donut.calories} />

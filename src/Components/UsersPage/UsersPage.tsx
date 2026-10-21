@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './UsersPage.css';
 import api from '../../Utils/apiClient';
 import { fetchAuthStatus } from '../../Utils/authStatus';
+import { formatShekel } from '../../Utils/formatShekel';
 
 type UserRow = {
     id: number;
@@ -243,7 +244,7 @@ export default function UsersPage() {
                                 <span className="usersRoleBadge">{user.role}</span>
                                 <span>{user.points}</span>
                                 <span>{user.purchaseCount}</span>
-                                <span>${Number(user.totalSpent).toFixed(2)}</span>
+                                <span>{formatShekel(Number(user.totalSpent))}</span>
                                 <div className="usersActionGroup">
                                     <button
                                         type="button"

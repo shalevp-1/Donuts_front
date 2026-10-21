@@ -1,4 +1,5 @@
 import { Donut } from "../../Models/Donuts";
+import { formatShekel } from '../../Utils/formatShekel';
 import './Card.css';
 
 export default function Card(props: {
@@ -24,7 +25,7 @@ export default function Card(props: {
                         <div className="infoCardContent">
                             <h2>{props.theCharacterOfTheCard.name}</h2>
                             <p>{props.theCharacterOfTheCard.description}</p>
-                            <h3 className="price">${props.theCharacterOfTheCard.price.toFixed(2)}</h3>
+                            <h3 className="price">{formatShekel(props.theCharacterOfTheCard.price)}</h3>
                         </div>
                     </div>
                 </button>
@@ -34,7 +35,7 @@ export default function Card(props: {
                 </div>
 
                 <div className="cardMetaRow">
-                    <span className="priceTag">${props.theCharacterOfTheCard.price.toFixed(2)}</span>
+                    <span className="priceTag">{formatShekel(props.theCharacterOfTheCard.price)}</span>
                     <span className="calorieTag">{props.theCharacterOfTheCard.calories} cal</span>
                 </div>
 

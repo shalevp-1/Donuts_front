@@ -1,4 +1,5 @@
 import { Donut } from "../../Models/Donuts";
+import { formatShekel } from '../../Utils/formatShekel';
 import './DetailedView.css';
 
 function CartIcon() {
@@ -46,7 +47,7 @@ export default function DetailedView(props: {
                     <div>
                         <h2>{props.theCharacterToShow.name}</h2>
                     </div>
-                    <span className="detailPrice">${props.theCharacterToShow.price.toFixed(2)}</span>
+                    <span className="detailPrice">{formatShekel(props.theCharacterToShow.price)}</span>
                 </div>
                 <p className="detailDescription">{props.theCharacterToShow.description}</p>
                 <div className="detailActions">
