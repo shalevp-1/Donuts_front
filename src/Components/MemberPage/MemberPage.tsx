@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './MemberPage.css';
 import api from '../../Utils/apiClient';
 import { fetchAuthStatus } from '../../Utils/authStatus';
+import { formatShekel } from '../../Utils/formatShekel';
 
 type PurchaseItem = {
     donutId: number;
@@ -113,7 +114,7 @@ export default function MemberPage() {
             <div className="memberShell">
                 <section className="memberOne">
                     <div>
-                        <p className="memberTitle">My perks</p>
+                        <p className="memberTitle">My Order</p>
                         <h1>Hi {accountName}, here is your account snapshot and purchase history.</h1>
                         <p className="memberLead">
                             This space is just for signed-in members, so you can quickly check your rewards, total orders, and the donuts you already picked up.
@@ -132,7 +133,7 @@ export default function MemberPage() {
                     </article>
                     <article className="memberStatCard">
                         <span>Total spent</span>
-                        <strong>${totalSpent.toFixed(2)}</strong>
+                        <strong>{formatShekel(totalSpent)}</strong>
                     </article>
                     <article className="memberStatCard">
                         <span>Latest points drop</span>
@@ -161,7 +162,7 @@ export default function MemberPage() {
                                             <h3>Order #{purchase.id}</h3>
                                             <p>{new Date(purchase.createdAt).toLocaleString()}</p>
                                         </div>
-                                        <strong>${purchase.total.toFixed(2)}</strong>
+                                        <strong>{formatShekel(purchase.total)}</strong>
                                     </div>
                                     <div className="purchaseOrderMeta">
                                         <span>{purchase.itemCount} donuts</span>
@@ -173,9 +174,9 @@ export default function MemberPage() {
                                                 <img src={item.image} alt={item.name} />
                                                 <div className="purchaseCopy">
                                                     <h3>{item.name}</h3>
-                                                    <p>{item.quantity} x ${item.priceEach.toFixed(2)}</p>
+                                                    <p>{item.quantity} x {formatShekel(item.priceEach)}</p>
                                                 </div>
-                                                <strong>${item.lineTotal.toFixed(2)}</strong>
+                                                <strong>{formatShekel(item.lineTotal)}</strong>
                                             </div>
                                         ))}
                                     </div>

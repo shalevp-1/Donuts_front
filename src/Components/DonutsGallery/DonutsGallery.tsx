@@ -6,6 +6,7 @@ import Card from '../Card/Card';
 import DetailedView from '../DetailedView/DetailedView';
 import { readCartCookie, saveCartCookie } from '../../Utils/cartCookie';
 import { fetchDonuts } from '../../Utils/donutsApi';
+import { formatShekel } from '../../Utils/formatShekel';
 
 const DONUTS_BATCH_SIZE = 6;
 
@@ -49,9 +50,11 @@ export default function DonutsGallery() {
     const averagePrice = donuts.length > 0
         ? donuts.reduce((sum, donut) => sum + donut.price, 0) / donuts.length
         : 0;
-    const gallerySummary = donuts.length > 0
-        ? `${donuts.length} donuts loaded from your live bakery menu`
-        : 'Fresh donuts are loading in.';
+    const gallerySummary = isLoading
+        ? 'Fresh donuts are loading in.'
+        : donuts.length > 0
+            ? `${donuts.length} donuts loaded from your live bakery menu`
+            : '';
     const hasMoreDonuts = visibleCount < donuts.length;
     const activeDonutQuantity = activeDonut ? (cartItems[activeDonut.id] ?? 0) : 0;
     const cartDonuts = donuts.filter((donut) => (cartItems[donut.id] ?? 0) > 0);
@@ -203,7 +206,7 @@ export default function DonutsGallery() {
         <div className='DonutsGallery'>
             <div className="floatingCartArea">
                 <div className="cartPanelWrap">
-                    <div className="cartSummaryPill">${cartTotal.toFixed(2)}</div>
+                    <div className="cartSummaryPill">{formatShekel(cartTotal)}</div>
                     <button
                         type="button"
                         className="cartToggleBtn"
@@ -231,7 +234,7 @@ export default function DonutsGallery() {
                                                     />
                                                     <div className="cartRowCopy">
                                                         <h4>{donut.name}</h4>
-                                                        <p>{cartItems[donut.id]} x ${donut.price.toFixed(2)}</p>
+                                                        <p>{cartItems[donut.id]} x {formatShekel(donut.price)}</p>
                                                     </div>
                                                 </div>
                                                 <div className="cartRowActions">
@@ -255,7 +258,7 @@ export default function DonutsGallery() {
                                     <div className="cartFooter">
                                         <div className="cartTotalBlock">
                                             <span>Total</span>
-                                            <strong>${cartTotal.toFixed(2)}</strong>
+                                            <strong>{formatShekel(cartTotal)}</strong>
                                         </div>
                                         <div className="cartFooterActions">
                                             <button type="button" className="cartClearBtn" onClick={clearCart}>Clear all</button>
@@ -283,21 +286,20 @@ export default function DonutsGallery() {
 
             <div className="donutsOne">
                 <div className="donutsOneCopy">
-                    <p className="oneTitle">Our donuts, your SQL menu.</p>
                     <h1>Donuts made with data.</h1>
                     <p className="oneText">
                         Have a suggestion for a new flavor? Want to see the nutritional info for your favorites? Our menu is powered by a live connection to your database so it's always up to date and open to your input!
                     </p>
                     <p className="oneContact">Contact us at <a href="mailto:shalevpecksp@hotmail.com">shalevpecksp@hotmail.com</a></p>
-                    <p className="oneSummary">{gallerySummary}</p>
+                    {gallerySummary && <p className="oneSummary">{gallerySummary}</p>}
                     <div className="oneStatRow">
                         <div className="oneStatCard">
-                            <span>Live menu</span>
+                            <span>Donuts</span>
                             <strong>{donuts.length}</strong>
                         </div>
                         <div className="oneStatCard">
                             <span>Average price</span>
-                            <strong>${averagePrice.toFixed(2)}</strong>
+                            <strong>{formatShekel(averagePrice)}</strong>
                         </div>
                         <div className="oneStatCard">
                             <span>Spotlight now</span>

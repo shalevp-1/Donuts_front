@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import './ThankYouPage.css';
+import { formatShekel } from '../../Utils/formatShekel';
 
 type ThankYouState = {
     orderId?: number;
@@ -32,7 +33,7 @@ export default function ThankYouPage() {
                     </article>
                     <article>
                         <span>Total</span>
-                        <strong>${Number(state.total || 0).toFixed(2)}</strong>
+                        <strong>{formatShekel(Number(state.total || 0))}</strong>
                     </article>
                     <article>
                         <span>Points earned</span>
@@ -41,7 +42,7 @@ export default function ThankYouPage() {
                 </div>
 
                 <div className="thankYouActions">
-                    <Link to="/my-perks" className="thankYouPrimary">View my perks</Link>
+                    <Link to="/my-orders" className="thankYouPrimary">View my Order</Link>
                     <Link to="/donuts" className="thankYouSecondary">Order more donuts</Link>
                 </div>
             </div>
