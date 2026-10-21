@@ -1,4 +1,4 @@
-import { Donut } from "../Models/Donuts";
+import type { Donut } from "../Models/Donuts";
 import { buildApiUrl } from "./apiClient";
 
 function normalizeIngredients(rawIngredients: unknown): string[] {
@@ -28,15 +28,19 @@ function normalizeIngredients(rawIngredients: unknown): string[] {
     return [];
 }
 
-function normalizeDonut(rawDonut: any): Donut {
+export function normalizeDonut(rawDonut: unknown): Donut {
+    const donut = rawDonut && typeof rawDonut === "object"
+        ? rawDonut as Record<string, unknown>
+        : {};
+
     return {
-        id: Number(rawDonut.id),
-        name: String(rawDonut.name ?? ""),
-        description: String(rawDonut.description ?? ""),
-        price: Number(rawDonut.price ?? 0),
-        ingredients: normalizeIngredients(rawDonut.ingredients),
-        calories: Number(rawDonut.calories ?? 0),
-        image: String(rawDonut.image ?? "")
+        id: Number(donut.id),
+        name: String(donut.name ?? ""),
+        description: String(donut.description ?? ""),
+        price: Number(donut.price ?? 0),
+        ingredients: normalizeIngredients(donut.ingredients),
+        calories: Number(donut.calories ?? 0),
+        image: String(donut.image ?? "")
     };
 }
 
@@ -47,6 +51,10 @@ export async function fetchDonuts(): Promise<Donut[]> {
         throw new Error(`Failed to load donuts: ${response.status}`);
     }
 
-    const donuts = await response.json();
-    return Array.isArray(donuts) ? donuts.map(normalizeDonut) : [];
+    const donuts: unknown = await response.json();
+    if (!Array.isArray(donuts)) {
+        throw new Error("The server returned an invalid donut list.");
+    }
+
+    return donuts.map(normalizeDonut);
 }

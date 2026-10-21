@@ -21,7 +21,7 @@ export function readCartCookie(): CartItems {
 
         return Object.entries(parsed).reduce<CartItems>((acc, [key, value]) => {
             const donutId = Number(key);
-            if (Number.isInteger(donutId) && typeof value === 'number' && value > 0) {
+            if (Number.isInteger(donutId) && donutId > 0 && Number.isInteger(value) && value > 0) {
                 acc[donutId] = value;
             }
             return acc;

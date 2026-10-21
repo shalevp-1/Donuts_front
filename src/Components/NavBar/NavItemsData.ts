@@ -3,7 +3,7 @@ export interface INavItem {
     urlStr: string
 }
 
-export let navBarArr = [
+export const navBarArr: INavItem[] = [
     {
         displayStr: "Home",
         urlStr: "/"
