@@ -60,6 +60,9 @@ export default function ServerStatusLayer() {
 
   useEffect(() => {
     let isMounted = true;
+    let isDocumentVisible = document.visibilityState !== 'hidden';
+    let requestInFlight = false;
+    let immediateCheckPending = false;
     const onlinePollDelayMs = 8000;
     const offlinePollDelayMs = 20000;
 
@@ -125,6 +128,19 @@ export default function ServerStatusLayer() {
     };
 
     const pingServer = async () => {
+      if (!isMounted || !isDocumentVisible) {
+        return;
+      }
+
+      if (requestInFlight) {
+        immediateCheckPending = true;
+        return;
+      }
+
+      requestInFlight = true;
+      immediateCheckPending = false;
+      clearPollTimer();
+
       try {
         const health = await fetchServerHealth();
 
@@ -158,21 +174,52 @@ export default function ServerStatusLayer() {
           updateStatus('offline');
         }
       } finally {
+        requestInFlight = false;
+
         if (!isMounted) {
           return;
         }
 
         clearPollTimer();
-        pollTimerRef.current = window.setTimeout(() => {
+
+        if (isDocumentVisible && immediateCheckPending) {
+          immediateCheckPending = false;
           void pingServer();
-        }, statusRef.current === 'offline' ? offlinePollDelayMs : onlinePollDelayMs);
+        } else if (isDocumentVisible) {
+          pollTimerRef.current = window.setTimeout(() => {
+            pollTimerRef.current = null;
+            void pingServer();
+          }, statusRef.current === 'offline' ? offlinePollDelayMs : onlinePollDelayMs);
+        }
       }
     };
 
-    void pingServer();
+    const handleVisibilityChange = () => {
+      isDocumentVisible = document.visibilityState !== 'hidden';
+      clearPollTimer();
+
+      if (!isDocumentVisible) {
+        immediateCheckPending = false;
+        return;
+      }
+
+      if (requestInFlight) {
+        immediateCheckPending = true;
+        return;
+      }
+
+      void pingServer();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    if (isDocumentVisible) {
+      void pingServer();
+    }
 
     return () => {
       isMounted = false;
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       clearPollTimer();
       clearNoticeTimer();
       clearConfettiTimer();
