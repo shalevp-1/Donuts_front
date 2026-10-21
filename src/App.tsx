@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import NavBar from './Components/NavBar/NavBar';
 import { navBarArr } from './Components/NavBar/NavItemsData';
 import DonutsGallery from './Components/DonutsGallery/DonutsGallery';
@@ -36,7 +36,8 @@ function App() {
           <Route path='/login' element={<PublicOnlyRoute><Login /></PublicOnlyRoute>} />
           <Route path='/cart' element={<CartPage />} />
           <Route path='/users' element={<AdminRoute><UsersPage /></AdminRoute>} />
-          <Route path='/my-perks' element={<MemberRoute><MemberPage /></MemberRoute>} />
+          <Route path='/my-orders' element={<MemberRoute><MemberPage /></MemberRoute>} />
+          <Route path='/my-perks' element={<Navigate to='/my-orders' replace />} />
           <Route path='/thank-you' element={<ProtectedRoute><ThankYouPage /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>

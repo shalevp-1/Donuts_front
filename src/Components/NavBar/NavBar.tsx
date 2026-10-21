@@ -34,7 +34,7 @@ export default function NavBar(props: { items: INavItem[] }) {
         if (isAuthenticated && accountRole === 'admin') {
             return [
                 ...baseItems.filter((item) => !['/login', '/signup'].includes(item.urlStr.toLowerCase())),
-                { displayStr: "My Perks", urlStr: "/my-perks" },
+                { displayStr: "My Order", urlStr: "/my-orders" },
                 { displayStr: "Manage", urlStr: "/donutsv" },
                 { displayStr: "Users", urlStr: "/users" }
             ];
@@ -43,7 +43,7 @@ export default function NavBar(props: { items: INavItem[] }) {
         if (isAuthenticated) {
             return [
                 ...baseItems.filter((item) => !['/login', '/signup'].includes(item.urlStr.toLowerCase())),
-                { displayStr: "My Perks", urlStr: "/my-perks" }
+                { displayStr: "My Order", urlStr: "/my-orders" }
             ];
         }
 

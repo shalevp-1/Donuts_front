@@ -45,11 +45,11 @@ export default function Login() {
 
             if (res.data.status === 'Logged in successfully') {
                 setAuthMessage({ type: 'success', text: 'Welcome back. Redirecting you now.' });
-                let nextRoute = '/my-perks';
+                let nextRoute = '/my-orders';
 
                 try {
                     const authStatus = await fetchAuthStatus();
-                    nextRoute = authStatus.role === 'admin' ? '/donutsv' : '/my-perks';
+                    nextRoute = authStatus.role === 'admin' ? '/donutsv' : '/my-orders';
                 } catch {
                     nextRoute = '/';
                 }

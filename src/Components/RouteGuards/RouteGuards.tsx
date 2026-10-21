@@ -17,24 +17,24 @@ function useAuthSnapshot() {
 
   const { pathname } = useLocation();
 
-    useEffect(() => {
-        let isMounted = true;
+  useEffect(() => {
+    let isMounted = true;
 
-        async function loadAuthState() {
-            const res = await fetchAuthStatus();
+    async function loadAuthState() {
+      const res = await fetchAuthStatus();
 
-            if (!isMounted) {
-                return;
-            }
+      if (!isMounted) {
+        return;
+      }
 
-            setAuthState({
-                isLoading: false,
-                isAuthenticated: Boolean(res.authenticated),
-                role: res.role || ''
-            });
-        }
+      setAuthState({
+        isLoading: false,
+        isAuthenticated: Boolean(res.authenticated),
+        role: res.role || ''
+      });
+    }
 
-        loadAuthState();
+    loadAuthState();
 
     return () => {
       isMounted = false;
@@ -48,7 +48,7 @@ export function PublicOnlyRoute({ children }: { children: ReactElement }) {
   const { isAuthenticated, role } = useAuthSnapshot();
 
   if (isAuthenticated) {
-    return <Navigate to={role === 'admin' ? '/donutsv' : '/my-perks'} replace />;
+    return <Navigate to={role === 'admin' ? '/donutsv' : '/my-orders'} replace />;
   }
 
   return children;
@@ -66,7 +66,7 @@ export function AdminRoute({ children }: { children: ReactElement }) {
   }
 
   if (role !== 'admin') {
-    return <Navigate to="/my-perks" replace />;
+    return <Navigate to="/my-orders" replace />;
   }
 
   return children;
