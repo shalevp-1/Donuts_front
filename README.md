@@ -4,6 +4,10 @@ The React and TypeScript storefront for **Donuts for You**, a full-stack donut s
 
 **Live site:** [dountstime.netlify.app](https://dountstime.netlify.app/)
 
+**Demo accounts:**
+- **Admin:** Username: `admin` · Password: `admin`
+- **User:** Username: `sha` · Password: `shasha`
+
 > The API runs on Render and may take a few seconds to respond after a period of inactivity.
 
 ## Product demos
