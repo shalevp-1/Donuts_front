@@ -12,23 +12,26 @@ The React and TypeScript storefront for **Donuts for You**, a full-stack donut s
 
 ## Product demos
 
-### Buying donuts
+### Buying Donuts
 
 ![A demo of browsing and buying donuts](./assets/BuyingDemoDonuts.gif)
 
-### Updating a donut price as an admin
+Users can:
+- Browse the donut catalog and view product details, including prices, ingredients, and calories.
+- Add and remove donuts from a persistent shopping cart.
+- Register for an account, sign in, and sign out.
+- Receive an automated email after registering a new account.
+- Complete checkout and review order summaries.
+- Earn and view rewards points, access coupons, and review purchase history.
+
+### Admin Management
 
 ![A demo of an admin updating a donut's price](./assets/AdminDemoDonuts.gif)
 
-## Features
-
-- Browse donuts and view product details, including price, ingredients, and calories
-- Add and remove items from a persistent cart
-- Register, sign in, and sign out
-- Check out and view an order summary
-- View rewards points, coupons, and purchase history
-- Use admin pages to manage donuts and users
-
+Admins can:
+- Update donut prices and manage product information.
+- Manage the donut catalog through dedicated admin pages.
+- Access user management tools to manage registered accounts.
 ## Built with
 
 React 18, TypeScript, React Router, Axios, Bootstrap, and CSS. The project was bootstrapped with Create React App.
@@ -42,7 +45,7 @@ npm install
 npm start
 ```
 
-The development server opens at `http://localhost:3000`. The backend and MySQL database must also be configured and running for API-backed features. See the [backend README](../backend/README.md) for setup instructions.
+The development server opens at `http://localhost:3000`. The backend and MySQL database must also be configured and running for API-backed features. See the [backend README](https://github.com/shalevp-1/Donuts_Backend) for setup instructions.
 
 Create a production build with:
 
