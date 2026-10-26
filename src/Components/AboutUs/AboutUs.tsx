@@ -39,18 +39,56 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section className="aboutDetailsPanel">
+              <section className="aboutDetailsPanel">
         <div className="aboutDetailsText">
+          <span className="aboutEyebrow">Behind the project</span>
+          <h2>Built from frontend to backend.</h2>
           <p>
-            This site uses React, TypeScript, and a Node/Express backend MySQL database 
+            This full-stack web application was built using React,
+            TypeScript, Node.js, Express, and MySQL. It combines a
+            responsive storefront with backend services for product
+            management, authentication, and orders.
           </p>
-        </div>
-        <div className="contactInfo">
-          <div>
-            <strong>Shalev Bakery</strong>
+
+          <div className="aboutRepositories">
+            <span className="contactLabel">Explore the code</span>
+            <a
+              href="https://github.com/shalevp-1/Donuts_front"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Frontend Repository
+              <span aria-hidden="true"> ↗</span>
+            </a>
+            <a
+              href="https://github.com/shalevp-1/Donuts_Backend"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Backend Repository
+              <span aria-hidden="true"> ↗</span>
+            </a>
           </div>
-          <div>
-            <strong>(050) 233-6023</strong>
+        </div>
+
+        <div className="contactInfo">
+          <span className="aboutEyebrow">Get in touch</span>
+
+          <div className="contactItem">
+            <span className="contactLabel">Business</span>
+            <strong>Shalev&apos;s Bakery</strong>
+          </div>
+
+          <div className="contactItem">
+            <span className="contactLabel">Phone</span>
+            <a href="tel:+972502336023">050-233-6023</a>
+          </div>
+
+          <div className="contactItem">
+            <span className="contactLabel">Email</span>
+            <a href="mailto:Shalevpecksp@hotmail.com">
+              Shalevpecksp@hotmail.com
+            </a>
           </div>
         </div>
       </section>
